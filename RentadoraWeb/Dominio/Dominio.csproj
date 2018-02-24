@@ -43,6 +43,7 @@
     <Compile Include="Alquiler.cs" />
     <Compile Include="CCliente.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="CUsuario.cs" />
     <Compile Include="Empresa.cs" />
     <Compile Include="Particular.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

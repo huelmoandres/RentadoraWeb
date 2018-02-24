@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Usuario
+    public class Usuario
     {
         private string mail;
         private string pass;
