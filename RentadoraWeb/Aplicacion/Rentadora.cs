@@ -8,6 +8,5 @@ namespace Aplicacion
 {
     class Rentadora
     {
-        private string nombre;
     }
 }
