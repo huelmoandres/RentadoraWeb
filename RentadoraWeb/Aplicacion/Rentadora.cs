@@ -8,7 +8,6 @@ namespace Aplicacion
 {
     class Rentadora
     {
-        //Esto es una prueba rama cambios.
-        private string agustin;
+        
     }
 }

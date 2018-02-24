@@ -88,11 +88,63 @@ namespace Dominio
             }
         }
 
+        public static bool ValidoCi(string ci)
+        {
+            bool resultado = false;
+            if (ci.Length >= 7 && ci.Length <=9)
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
+        //Consultar
+        /*public static bool ValidoTipoDoc(string documento)
+        {
+            bool resultado = false;
+            if (EnumTipoDocumento)
+            {
+                resultado = true;
+            }
+            return resultado;
+        }*/
+
+        public static bool ValidoPaisDoc(string pais)
+        {
+            bool resultado = false;
+            if (pais.Length > 3)
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
+        public static bool ValidoNombre(string nombre)
+        {
+            bool resultado = false;
+            if (nombre != "")
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
+        public static bool ValidoApellido(string apellido)
+        {
+            bool resultado = false;
+            if (nombre != "")
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
         public enum EnumTipoDocumento
         {
             Cedula,
             Pasaporte,
-            DNI
+            DNI,
+            RUT
         }
     }
 }

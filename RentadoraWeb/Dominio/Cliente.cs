@@ -42,5 +42,20 @@ namespace Dominio
                 anioInicio = value;
             }
         }
+
+        public enum ErroresAlta
+        {
+            Ok,
+            ErrorTelefono,
+            ErrorAnioInicio,
+            ErrorCi,
+            ErrorDocumento,
+            ErrorPaisDoc,
+            ErrorNombre,
+            ErrorApellido,
+            ErrorRut,
+            ErrorRazonSocial,
+            ErrorNomContacto
+        }
     }
 }
