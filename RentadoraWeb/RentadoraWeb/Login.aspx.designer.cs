@@ -40,6 +40,15 @@ namespace RentadoraWeb {
         protected global::System.Web.UI.WebControls.TextBox txtUsuario;
         
         /// <summary>
+        /// Control valUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator valUsuario;
+        
+        /// <summary>
         /// Control lblPass.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace RentadoraWeb {
         protected global::System.Web.UI.WebControls.TextBox txtPass;
         
         /// <summary>
+        /// Control valPass.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator valPass;
+        
+        /// <summary>
         /// Control btnIngresar.
         /// </summary>
         /// <remarks>
@@ -67,13 +85,13 @@ namespace RentadoraWeb {
         protected global::System.Web.UI.WebControls.Button btnIngresar;
         
         /// <summary>
-        /// Control Button1.
+        /// Control ValidationSummary1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
         /// Control lblError.

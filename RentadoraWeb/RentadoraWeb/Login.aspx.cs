@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Aplicacion;
+using Dominio;
 
 namespace RentadoraWeb
 {
@@ -11,7 +13,10 @@ namespace RentadoraWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["usuario"] != null)
+            {
+                Session.Abandon();
+            }
         }
 
         protected void btnIngresar_Click(object sender, EventArgs e)
@@ -21,16 +26,13 @@ namespace RentadoraWeb
             if (usu != "" && pass != "")
             {
                 Usuario u = Rentadora.Instancia.Login(usu, pass);
+                
                 if (u != null)
                 {
                     Session["usuario"] = u;
-                    Session["email"] = u.Email;
+                    Session["email"] = u.Mail;
                     Session["rol"] = u.Rol;
                     if (u.Rol == 1)
-                    {
-                        Organizador o = (Organizador)u;
-                        Session["nombre"] = o.Nombre;
-                    }
                     Response.Redirect("Inicio.aspx");
                 }
                 else
@@ -38,11 +40,6 @@ namespace RentadoraWeb
                     this.lblError.Text = "Usuario y/o contraseña inválido";
                 }
             }
-        }
-
-        protected void btnRegistro_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

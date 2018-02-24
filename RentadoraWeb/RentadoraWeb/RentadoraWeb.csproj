@@ -111,6 +111,9 @@
     <Content Include="Paginas\AltaAlquiler.aspx" />
     <Content Include="ScriptsRentadora\bootstrap.bundle.js" />
     <Content Include="ScriptsRentadora\bootstrap.css" />
+    <Content Include="ScriptsRentadora\jquery-ui.js" />
+    <Content Include="ScriptsRentadora\jquery.js" />
+    <Content Include="ScriptsRentadora\validaciones.js" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Web.config" />

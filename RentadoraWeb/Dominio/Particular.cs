@@ -132,7 +132,7 @@ namespace Dominio
         public static bool ValidoApellido(string apellido)
         {
             bool resultado = false;
-            if (nombre != "")
+            if (apellido != "")
             {
                 resultado = true;
             }

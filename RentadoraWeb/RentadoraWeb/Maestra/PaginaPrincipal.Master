@@ -8,6 +8,10 @@
     <title>RentadoraWeb</title>
     <script src="../ScriptsRentadora/bootstrap.bundle.js"></script>
     <link href="../ScriptsRentadora/bootstrap.css" rel="stylesheet" />
+    <script src="../ScriptsRentadora/jquery-ui.js"></script>
+    <script src="../ScriptsRentadora/jquery.js"></script>
+    <script src="../ScriptsRentadora/validaciones.js"></script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
