@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentadoraWeb", "RentadoraWeb\RentadoraWeb.csproj", "{67142824-9093-44F8-A663-FBC55D87435A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplicacion", "Aplicacion\Aplicacion.csproj", "{AD30493D-D6E4-4461-8A18-5D80DE290B71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{DEA0416E-4E69-46DB-9D78-8525BBF21711}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67142824-9093-44F8-A663-FBC55D87435A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67142824-9093-44F8-A663-FBC55D87435A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67142824-9093-44F8-A663-FBC55D87435A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67142824-9093-44F8-A663-FBC55D87435A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD30493D-D6E4-4461-8A18-5D80DE290B71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD30493D-D6E4-4461-8A18-5D80DE290B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD30493D-D6E4-4461-8A18-5D80DE290B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD30493D-D6E4-4461-8A18-5D80DE290B71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEA0416E-4E69-46DB-9D78-8525BBF21711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEA0416E-4E69-46DB-9D78-8525BBF21711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEA0416E-4E69-46DB-9D78-8525BBF21711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEA0416E-4E69-46DB-9D78-8525BBF21711}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
