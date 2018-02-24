@@ -57,5 +57,35 @@ namespace Dominio
                 nombreContacto = value;
             }
         }
+
+        public static bool ValidoRazonSocial(string razonSocial)
+        {
+            bool resultado = false;
+            if (razonSocial != "")
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
+        public static bool ValidoNombreContacto(string nomContacto)
+        {
+            bool resultado = false;
+            if (nomContacto != "")
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
+        /*public static bool ValidoRut(int rut)
+        {
+            bool resultado = false;
+            if (rut.)
+            {
+                resultado = true;
+            }
+            return resultado;
+        }*/
     }
 }

@@ -43,6 +43,26 @@ namespace Dominio
             }
         }
 
+        public static bool ValidoTel(string tel)
+        {
+            bool resultado = false;
+            if(tel != "")
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
+        public static bool ValidoAnio(int anio)
+        {
+            bool resultado = false;
+            if (anio > 0)
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
         public enum ErroresAlta
         {
             Ok,
