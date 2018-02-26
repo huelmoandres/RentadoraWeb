@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class CCliente
+    public class CCliente
     {
-        private static CCliente instanciaC = new CCliente();
+        private static CCliente instancia = new CCliente();
         private List<Cliente> clientes = new List<Cliente>();
 
         private CCliente(){}
 
-        public static CCliente InstanciaC
+        public static CCliente Instancia
         {
             get
             {
-                return instanciaC;
+                return instancia;
             }
         }
 
@@ -50,20 +50,20 @@ namespace Dominio
             return resultado;
         }
 
-        public Cliente.ErroresAlta AltaEmpresa(string tel, int anio, int rut, string razonSocial, string nombreContacto)
+        public Empresa.ErroresAlta AltaEmpresa(string tel, int anio, int rut, string razonSocial, string nombreContacto)
         {
-            Cliente.ErroresAlta resultado = Cliente.ErroresAlta.Ok;
+            Empresa.ErroresAlta resultado = Empresa.ErroresAlta.Ok;
             if (!Empresa.ValidoTel(tel))
             {
-                resultado = Cliente.ErroresAlta.ErrorTelefono;
+                resultado = Empresa.ErroresAlta.ErrorTelefono;
             }
             else if (!Empresa.ValidoAnio(anio))
             {
-                resultado = Cliente.ErroresAlta.ErrorAnioInicio;
+                resultado = Empresa.ErroresAlta.ErrorAnioInicio;
             }
             else if (!Empresa.ValidoRazonSocial(razonSocial))
             {
-                resultado = Cliente.ErroresAlta.ErrorRazonSocial;
+                resultado = Empresa.ErroresAlta.ErrorRazonSocial;
             }
             else if (!Empresa.ValidoNombreContacto(nombreContacto))
             {
