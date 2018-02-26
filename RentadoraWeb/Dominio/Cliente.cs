@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    abstract class Cliente
+    public abstract class Cliente
     {
         private string telefono;
         private int anioInicio;

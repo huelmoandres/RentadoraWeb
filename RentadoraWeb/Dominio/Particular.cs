@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Particular : Cliente
+    public class Particular : Cliente
     {
         private string ci;
         private EnumTipoDocumento documento;
