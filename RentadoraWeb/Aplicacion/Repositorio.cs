@@ -10,7 +10,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace Aplicacion
 {
     [Serializable]
-    class Repositorio
+   public class Repositorio
     {
         private string rutaArchivo;
         private CCliente ccliente;
@@ -30,7 +30,7 @@ namespace Aplicacion
             fs.Close();
         }
 
-        public void Desarizable()
+        public void Deserealizable()
         {
             FileStream fs = new FileStream(rutaArchivo, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();

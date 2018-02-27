@@ -157,6 +157,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Binario\" />
     <Folder Include="CSS\" />
   </ItemGroup>
   <PropertyGroup>

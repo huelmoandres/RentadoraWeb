@@ -23,5 +23,10 @@ namespace Aplicacion
         {
             return CUsuario.Instancia.Login(email, pass);
         }
+
+        public void CargarDatosPrueba()
+        {
+
+        }
     }
 }
