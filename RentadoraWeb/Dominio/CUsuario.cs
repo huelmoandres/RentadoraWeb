@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class CUsuario
+    [Serializable]
+    public class CUsuario: ISerializable
     {
         private static CUsuario instancia = new CUsuario();
         private List<Usuario> usuarios = new List<Usuario>();
@@ -52,6 +54,14 @@ namespace Dominio
                 i++;
             }
             return usu;
+        }
+
+
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            //usa cuando serializa
+            info.AddValue("listaUsuarios", this.usuarios, typeof(List<Usuario>));
         }
     }
 }
