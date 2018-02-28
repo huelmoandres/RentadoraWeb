@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Dominio
 {
-    public class CCliente
+    [Serializable]
+    public class CCliente : ISerializable
     {
         private static CCliente instancia = new CCliente();
         private List<Cliente> clientes = new List<Cliente>();
@@ -75,6 +77,12 @@ namespace Dominio
                 clientes.Add(e);
             }
             return resultado;
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            //usa cuando serializa
+            info.AddValue("listaClientes", this.clientes, typeof(List<Cliente>));
         }
     }
 }

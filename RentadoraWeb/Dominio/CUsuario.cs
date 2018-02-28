@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Dominio
 {
     [Serializable]
-    public class CUsuario: ISerializable
+    public class CUsuario : ISerializable
     {
         private static CUsuario instancia = new CUsuario();
         private List<Usuario> usuarios = new List<Usuario>();

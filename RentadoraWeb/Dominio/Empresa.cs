@@ -78,14 +78,14 @@ namespace Dominio
             return resultado;
         }
 
-        /*public static bool ValidoRut(int rut)
+        public static bool ValidoRut(int rut)
         {
             bool resultado = false;
-            if (rut.)
+            if (rut > 0)
             {
                 resultado = true;
             }
             return resultado;
-        }*/
+        }
     }
 }

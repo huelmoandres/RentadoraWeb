@@ -9,7 +9,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Aplicacion
 {
-    [Serializable]
+   [Serializable]
    public class Repositorio
     {
         private string rutaArchivo;
