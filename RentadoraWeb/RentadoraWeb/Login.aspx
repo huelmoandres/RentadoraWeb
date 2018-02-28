@@ -31,6 +31,8 @@
                             <asp:Label ID="lblPass" runat="server" Text="Contraseña"></asp:Label>
                             <asp:TextBox ID="txtPass" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
                             <asp:CustomValidator ID="valPass" runat="server" ControlToValidate="txtPass" ErrorMessage="El campo contraseña es obligatorio" ValidateEmptyText="True" ClientValidationFunction="validarVacio">*</asp:CustomValidator>
+                            <br />
+                            <asp:Button ID="btnIngresar" CssClass="btn btn-info" runat="server" OnClick="btnIngresar_Click" style="margin-left: 0px" Text="Ingresar" />
                         </div>
                     </div>
                 </div>
@@ -41,7 +43,6 @@
                 <div class="col-md-6 col-md-offset-3">
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <asp:Button ID="btnIngresar" CssClass="btn btn-info" runat="server" OnClick="btnIngresar_Click" style="margin-left: 0px" Text="Ingresar" />
                             <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
                         </div>
                         <div class="col-md-12 form-group">

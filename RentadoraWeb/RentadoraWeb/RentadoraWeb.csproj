@@ -158,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Binario\" />
+    <Folder Include="Bitacoras\" />
     <Folder Include="CSS\" />
   </ItemGroup>
   <PropertyGroup>
