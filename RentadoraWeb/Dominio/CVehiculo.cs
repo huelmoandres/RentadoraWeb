@@ -39,7 +39,7 @@ namespace Dominio
             {
                 resultado = Vehiculo.ErroresAlta.ErrorKilometraje;
             }
-            else if (!Vehiculo.ValidoFoto(anio))
+            else if (!Vehiculo.ValidoFoto(foto))
             {
                 resultado = Vehiculo.ErroresAlta.ErrorFoto;
             }
