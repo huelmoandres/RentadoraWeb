@@ -1,0 +1,58 @@
+* 
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Bookman Old Style", serif;
+}
+
+
+body 
+{
+    background: #f2f2f2;
+    font-size: 16px;
+    padding-top: 5px;
+}
+
+h1 
+{
+    color: #1e0b73;
+    text-align: center;
+}
+
+.cuerpo
+{
+    width: 1000px;
+    margin: 20px auto;
+    background: #fffff7;
+    padding: 0;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.75);
+    text-align: center;
+}
+
+.menu 
+{
+    background: #b9aeae;
+}
+
+a 
+{
+    text-decoration: none;
+    font-size: 20px;
+    color: #4357ad;
+    font-family: "Times New Roman", Georgia, Serif;
+}
+
+nav a 
+{
+    color: #000;
+}
+
+a:hover 
+{
+	text-decoration: none;
+	color: #a90c92;
+}
+
+
+

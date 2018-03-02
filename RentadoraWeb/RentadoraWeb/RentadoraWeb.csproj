@@ -94,6 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\estilos.css" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
     <Content Include="packages.config" />
@@ -110,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Paginas\AltaAlquiler.aspx" />
+    <Content Include="Paginas\AltaCliente.aspx" />
     <Content Include="ScriptsRentadora\bootstrap.bundle.js" />
     <Content Include="ScriptsRentadora\bootstrap.css" />
     <Content Include="ScriptsRentadora\jquery-ui.js" />
@@ -144,6 +146,13 @@
     <Compile Include="Paginas\AltaAlquiler.aspx.designer.cs">
       <DependentUpon>AltaAlquiler.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Paginas\AltaCliente.aspx.cs">
+      <DependentUpon>AltaCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\AltaCliente.aspx.designer.cs">
+      <DependentUpon>AltaCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -159,7 +168,6 @@
   <ItemGroup>
     <Folder Include="Binario\" />
     <Folder Include="Bitacoras\" />
-    <Folder Include="CSS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

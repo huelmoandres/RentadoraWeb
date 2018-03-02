@@ -11,13 +11,26 @@
     <script src="../ScriptsRentadora/jquery-ui.js"></script>
     <script src="../ScriptsRentadora/jquery.js"></script>
     <script src="../ScriptsRentadora/validaciones.js"></script>
+    <link href="../CSS/estilos.css" rel="stylesheet" />
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div class="cuerpo">
+        <div class="menu"> 
+            <nav>
+                <ul class="nav nav-tabs navbar">
+                    <li><a href="index.html">Introducción</a></li>
+                    <li><a href="#">Pruebas</a></li>
+                    <li><a href="#">Participantes</a></li>
+                    <li><a href="#">Ganador</a></li>
+                    <li><a href="#">Premios</a></li>
+                    <li><a href="#">Posiciones</a></li>
+                </ul>
+            </nav>
+        </div>
         <asp:ContentPlaceHolder ID="Body" runat="server">
         
         </asp:ContentPlaceHolder>
