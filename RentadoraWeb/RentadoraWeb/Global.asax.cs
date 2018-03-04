@@ -16,6 +16,7 @@ namespace RentadoraWeb
         protected void Application_Start(object sender, EventArgs e)
         {
             string rutaArchivo = HttpRuntime.AppDomainAppPath + @"Binario\serial.bin";
+            string rutaArchivoTipos = HttpRuntime.AppDomainAppPath + @"Bitacoras\tipos.txt";
             if (File.Exists(rutaArchivo))
             {
                 Repositorio rep = new Repositorio(rutaArchivo);
@@ -24,6 +25,11 @@ namespace RentadoraWeb
             else
             {
                 Rentadora.Instancia.CargarDatosPrueba();
+            }
+
+            if (File.Exists(rutaArchivoTipos))
+            {
+                Rentadora.Instancia.LeerDatosTipoVehiculos(rutaArchivoTipos);
             }
         }
 
