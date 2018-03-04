@@ -10,6 +10,6 @@
 namespace RentadoraWeb.Paginas {
     
     
-    public partial class AltaCliente {
+    public partial class CerrarSesion {
     }
 }

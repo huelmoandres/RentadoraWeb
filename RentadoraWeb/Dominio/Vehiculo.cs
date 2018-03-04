@@ -132,8 +132,7 @@ namespace Dominio
             ErrorTipo,
             ErrorAnio,
             ErrorKilometraje,
-            ErrorFoto,
-            ErrorExiste
+            ErrorFoto
         }
     }
 }

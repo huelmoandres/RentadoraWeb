@@ -34,9 +34,6 @@ namespace Dominio
             else if (!TipoVehiculo.ValidoPrecio(precioDiario))
             {
                 resultado = TipoVehiculo.ErroresAlta.ErrorPrecioDiario;
-            } else if (this.ExisteTipo(marca, modelo))
-            {
-                resultado = TipoVehiculo.ErroresAlta.ErrorExiste;
             }
             else
             {
@@ -46,35 +43,10 @@ namespace Dominio
             return resultado;
         }
 
-        public List<TipoVehiculo> ListadoTipos()
-        {
-            return this.tipos;
-        }
-
-        public bool ExisteTipo(string marca, string modelo)
-        {
-            bool existe = false;
-            int i = 0;
-            while(i < this.tipos.Count && !existe)
-            {
-                if(tipos[i].Marca == marca && tipos[i].Modelo == modelo)
-                {
-                    existe = true;
-                }
-                i++;
-            }
-            return existe;
-        }
-
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
+            //usa cuando serializa
             info.AddValue("listaTipoVehiculos", this.tipos, typeof(List<TipoVehiculo>));
-        }
-
-        public CTipoVehiculo(SerializationInfo info, StreamingContext context)
-        {
-            this.tipos = info.GetValue("listaTipoVehiculos", typeof(List<TipoVehiculo>)) as List<TipoVehiculo>;
-            CTipoVehiculo.instancia = this;
         }
     }
 }

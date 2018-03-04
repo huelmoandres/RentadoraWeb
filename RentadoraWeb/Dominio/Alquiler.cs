@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Alquiler
+    class Alquiler
     {
         private DateTime fechaInicio;
         private DateTime fechaFinal;
@@ -77,7 +77,7 @@ namespace Dominio
             }
         }
 
-        public TipoVehiculo Vehiculo
+        internal TipoVehiculo Vehiculo
         {
             get
             {
@@ -90,7 +90,7 @@ namespace Dominio
             }
         }
 
-        public Cliente Responsable
+        internal Cliente Responsable
         {
             get
             {
@@ -101,44 +101,6 @@ namespace Dominio
             {
                 responsable = value;
             }
-        }
-
-        public static bool ValidoFecha(DateTime fecha)
-        {
-            bool resultado = false;
-            if(fecha != null)
-            {
-                resultado = true;
-            }
-            return resultado;
-        }
-
-        public static bool ValidoHora(int hora)
-        {
-            bool resultado = false;
-            if (hora > 0 && hora <= 24)
-            {
-                resultado = true;
-            }
-            return resultado;
-        }
-
-        public double CalcularCosto()
-        {
-            double costoTotal = 0;
-            TimeSpan ts = fechaInicio - fechaFinal;
-            int cantidadDias = ts.Days;
-            costoTotal = (vehiculo.PrecioDiario * cantidadDias)
-
-        }
-
-        public enum ErroresAlta
-        {
-            Ok,
-            ErrorFecha,
-            ErrorHora,
-            ErrorVehiculo,
-            ErrorResponsable
         }
     }
 }
