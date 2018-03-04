@@ -13,6 +13,7 @@ namespace Dominio
         private string paisDocumento;
         private string nombre;
         private string apellido;
+        private static int descuento = 20;
 
         public Particular(string telefono, int anioInicio, string ci, EnumTipoDocumento documento, string paisDocumento, string nombre, string apellido) : base(telefono, anioInicio)
         {
@@ -99,15 +100,21 @@ namespace Dominio
         }
 
         //Consultar
-        /*public static bool ValidoTipoDoc(string documento)
+        public static bool ValidoTipoDoc(string documento)
         {
-            bool resultado = false;
-            if (EnumTipoDocumento)
+            bool existe = false;
+            string[] tiposEnum = Enum.GetNames(typeof(EnumTipoDocumento));
+            int i = 0;
+            while(i < tiposEnum.Length && !existe)
             {
-                resultado = true;
+                if(tiposEnum[i] == documento)
+                {
+                    existe = true;
+                }
+                i++;
             }
-            return resultado;
-        }*/
+            return existe;
+        }
 
         public static bool ValidoPaisDoc(string pais)
         {
@@ -137,6 +144,16 @@ namespace Dominio
                 resultado = true;
             }
             return resultado;
+        }
+
+        public override int CalcularDescuento()
+        {
+            int resultado = 0;
+            if(paisDocumento == "Uruguay")
+            {
+                resultado = Particular.descuento;
+            }
+            return descuento;
         }
 
         public enum EnumTipoDocumento

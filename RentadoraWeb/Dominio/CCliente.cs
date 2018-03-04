@@ -23,30 +23,45 @@ namespace Dominio
             }
         }
 
-        public Particular.ErroresAlta AltaParticular(string tel, int anio, string ci, Particular.EnumTipoDocumento documento, string paisDoc, string nombre, string apellido)
+        public Particular.ErroresAlta AltaParticular(string tel, int anio, string ci, string documento, string paisDoc, string nombre, string apellido)
         {
             Particular.ErroresAlta resultado = Particular.ErroresAlta.Ok;
             if (!Particular.ValidoTel(tel))
             {
                 resultado = Particular.ErroresAlta.ErrorTelefono;
-            } else if (!Particular.ValidoAnio(anio))
+            }
+            else if (!Particular.ValidoAnio(anio))
             {
                 resultado = Particular.ErroresAlta.ErrorAnioInicio;
-            } else if (!Particular.ValidoCi(ci))
+            }
+            else if (!Particular.ValidoCi(ci))
             {
                 resultado = Particular.ErroresAlta.ErrorCi;
-            } else if (!Particular.ValidoNombre(nombre))
+            }
+            else if (!Particular.ValidoNombre(nombre))
             {
                 resultado = Particular.ErroresAlta.ErrorNombre;
-            } else if (!Particular.ValidoApellido(apellido))
+            }
+            else if (!Particular.ValidoApellido(apellido))
             {
                 resultado = Particular.ErroresAlta.ErrorApellido;
-            } else if (!Particular.ValidoPaisDoc(paisDoc))
+            }
+            else if (!Particular.ValidoTipoDoc(documento))
+            {
+                resultado = Particular.ErroresAlta.ErrorDocumento;
+            }
+            else if (!Particular.ValidoPaisDoc(paisDoc))
             {
                 resultado = Particular.ErroresAlta.ErrorPaisDoc;
-            } else
+            }
+            else if (this.ExisteParticular(ci))
             {
-                Particular p = new Particular(tel, anio, ci, documento, paisDoc, nombre, apellido);
+                resultado = Particular.ErroresAlta.ErrorExiste;
+            }
+            else
+            {
+                Particular.EnumTipoDocumento doc = (Particular.EnumTipoDocumento) Enum.Parse(typeof(Particular.EnumTipoDocumento), documento);
+                Particular p = new Particular(tel, anio, ci, doc, paisDoc, nombre, apellido);
                 clientes.Add(p);
             }
             return resultado;
@@ -71,6 +86,10 @@ namespace Dominio
             {
                 resultado = Empresa.ErroresAlta.ErrorNomContacto;
             }
+            else if (this.ExisteEmpresa(rut))
+            {
+                resultado = Empresa.ErroresAlta.ErrorExiste;
+            }
             else
             {
                 Empresa e = new Empresa(tel, anio, rut, razonSocial, nombreContacto);
@@ -79,10 +98,53 @@ namespace Dominio
             return resultado;
         }
 
+        public bool ExisteParticular(string ci)
+        {
+            bool existe = false;
+            int i = 0;
+            while (i < this.clientes.Count && !existe)
+            {
+                if (clientes[i] is Particular)
+                {
+                    Particular p = clientes[i] as Particular;
+                    if (p.Ci == ci)
+                    {
+                        existe = true;
+                    }
+                }
+                i++;
+            }
+            return existe;
+        }
+
+        public bool ExisteEmpresa(int rut)
+        {
+            bool existe = false;
+            int i = 0;
+            while (i < this.clientes.Count && !existe)
+            {
+                if (clientes[i] is Empresa)
+                {
+                    Empresa e = clientes[i] as Empresa;
+                    if(e.Rut == rut)
+                    {
+                        existe = true;
+                    }
+                }
+                i++;
+            }
+            return existe;
+        }
+
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            //usa cuando serializa
             info.AddValue("listaClientes", this.clientes, typeof(List<Cliente>));
+        }
+
+        public CCliente(SerializationInfo info, StreamingContext context)
+        {
+            this.clientes = info.GetValue("listaClientes", typeof(List<Cliente>)) as List<Cliente>;
+            CCliente.instancia = this;
         }
     }
 }

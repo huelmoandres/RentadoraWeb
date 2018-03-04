@@ -63,6 +63,8 @@ namespace Dominio
             return resultado;
         }
 
+        public abstract int CalcularDescuento();
+
         public enum ErroresAlta
         {
             Ok,
@@ -75,7 +77,8 @@ namespace Dominio
             ErrorApellido,
             ErrorRut,
             ErrorRazonSocial,
-            ErrorNomContacto
+            ErrorNomContacto,
+            ErrorExiste
         }
     }
 }
