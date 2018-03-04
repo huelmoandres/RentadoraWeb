@@ -43,6 +43,10 @@ namespace Dominio
             {
                 resultado = Vehiculo.ErroresAlta.ErrorFoto;
             }
+            else if (this.ExisteVehiculo(matricula))
+            {
+                resultado = Vehiculo.ErroresAlta.ErrorExiste;
+            }
             else
             {
                 Vehiculo v = new Vehiculo(matricula, tipo, anio, kilometraje, foto);
@@ -51,10 +55,30 @@ namespace Dominio
             return resultado;
         }
 
+        public bool ExisteVehiculo(string matricula)
+        {
+            bool existe = false;
+            int i = 0;
+            while (i < this.vehiculos.Count && !existe)
+            {
+                if (vehiculos[i].Matricula == matricula)
+                {
+                    existe = true;
+                }
+                i++;
+            }
+            return existe;
+        }
+
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            //usa cuando serializa
             info.AddValue("listaVehiculo", this.vehiculos, typeof(List<Vehiculo>));
+        }
+
+        public CVehiculo(SerializationInfo info, StreamingContext context)
+        {
+            this.vehiculos = info.GetValue("listaVehiculo", typeof(List<Vehiculo>)) as List<Vehiculo>;
+            CVehiculo.instancia = this;
         }
     }
 }

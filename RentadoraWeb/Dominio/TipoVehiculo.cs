@@ -94,7 +94,8 @@ namespace Dominio
             Ok,
             ErrorMarca,
             ErrorModelo,
-            ErrorPrecioDiario
+            ErrorPrecioDiario,
+            ErrorExiste
         }
     }
 }

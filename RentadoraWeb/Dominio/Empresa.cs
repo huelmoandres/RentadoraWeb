@@ -71,6 +71,7 @@ namespace Dominio
         public static bool ValidoNombreContacto(string nomContacto)
         {
             bool resultado = false;
+            
             if (nomContacto != "")
             {
                 resultado = true;
@@ -86,6 +87,16 @@ namespace Dominio
                 resultado = true;
             }
             return resultado;
+        }
+
+        public override int CalcularDescuento()
+        {
+            int descuento = base.AnioInicio * 2;
+            if (descuento > 20)
+            {
+                descuento = 20;
+            }
+            return descuento;
         }
     }
 }

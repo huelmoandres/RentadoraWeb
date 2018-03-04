@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Dominio
@@ -51,6 +52,34 @@ namespace Dominio
             {
                 return rol;
             }
+        }
+
+        public static bool ValidoMail(string mail)
+        {
+            bool resultado = false;
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(mail);
+            if (match.Success)
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
+        public static bool ValidoPass(string pass)
+        {
+            bool resultado = false;
+            if(pass.Length > 6)
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
+        public enum ErroresAlta
+        {
+            ErrorMail,
+            ErrorPass
         }
     }
 }

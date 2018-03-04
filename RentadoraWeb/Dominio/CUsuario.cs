@@ -56,12 +56,15 @@ namespace Dominio
             return usu;
         }
 
-
-
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            //usa cuando serializa
             info.AddValue("listaUsuarios", this.usuarios, typeof(List<Usuario>));
+        }
+
+        public CUsuario(SerializationInfo info, StreamingContext context)
+        {
+            this.usuarios = info.GetValue("listaUsuarios", typeof(List<Usuario>)) as List<Usuario>;
+            CUsuario.instancia = this;
         }
     }
 }
