@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\estilos.css" />
+    <Content Include="CSS\jquery-ui.css" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
     <Content Include="packages.config" />
@@ -111,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Paginas\AltaAlquiler.aspx" />
+    <Content Include="Paginas\AltaAlquilerDatos.aspx" />
     <Content Include="Paginas\AltaCliente.aspx" />
     <Content Include="ScriptsRentadora\bootstrap.bundle.js" />
     <Content Include="ScriptsRentadora\bootstrap.css" />
@@ -145,6 +147,13 @@
     </Compile>
     <Compile Include="Paginas\AltaAlquiler.aspx.designer.cs">
       <DependentUpon>AltaAlquiler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\AltaAlquilerDatos.aspx.cs">
+      <DependentUpon>AltaAlquilerDatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\AltaAlquilerDatos.aspx.designer.cs">
+      <DependentUpon>AltaAlquilerDatos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\AltaCliente.aspx.cs">
       <DependentUpon>AltaCliente.aspx</DependentUpon>

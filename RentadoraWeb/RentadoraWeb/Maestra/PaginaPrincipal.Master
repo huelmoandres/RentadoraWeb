@@ -6,13 +6,10 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>RentadoraWeb</title>
-    <script src="../ScriptsRentadora/bootstrap.bundle.js"></script>
     <link href="../ScriptsRentadora/bootstrap.css" rel="stylesheet" />
-    <script src="../ScriptsRentadora/jquery-ui.js"></script>
+    <link href="../CSS/estilos.css" rel="stylesheet" />
     <script src="../ScriptsRentadora/jquery.js"></script>
     <script src="../ScriptsRentadora/validaciones.js"></script>
-    <link href="../CSS/estilos.css" rel="stylesheet" />
-
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
