@@ -1,0 +1,4 @@
+Fiat@Uno@30
+Chevrolet@Corsa@25
+Nissan@Sentra@45
+Renault@Clio@40

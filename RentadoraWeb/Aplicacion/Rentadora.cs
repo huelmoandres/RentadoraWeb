@@ -83,7 +83,7 @@ namespace Aplicacion
                 string linea = "";
                 while ((linea = str.ReadLine()) != null)
                 {
-                    string[] datos = linea.Split('#');
+                    string[] datos = linea.Split('@');
                 
                     string marca = datos[0];
                     string modelo = datos[1];

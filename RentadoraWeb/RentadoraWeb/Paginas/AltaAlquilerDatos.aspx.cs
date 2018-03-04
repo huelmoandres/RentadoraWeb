@@ -1,4 +1,5 @@
-﻿using Dominio;
+﻿using Aplicacion;
+using Dominio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,11 @@ namespace RentadoraWeb.Paginas
             //{
             //    if ((byte)Session["rol"] == 0)
             //    {
-            //        List<TipoVehiculo> marcas = CTipoVehiculo.Instancia.ObtenerMarcas();
-            //        this.listMarca.DataSource = marcas;
-            //        this.listMarca.DataBind();
+            List<TipoVehiculo> marcas = Rentadora.Instancia.ListadoTipos();
+            this.listMarca.DataTextField = "Marca";
+            this.listMarca.DataValueField = "Marca";
+            this.listMarca.DataSource = marcas;
+            this.listMarca.DataBind();
             //    }
             //    else
             //    {
@@ -34,7 +37,7 @@ namespace RentadoraWeb.Paginas
         protected void listMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
             string option = this.listMarca.SelectedValue;
-            if (option != "1")
+            if (option != "")
             {
                 this.lblModelo.Visible = true;
                 this.listModelo.Visible = true;

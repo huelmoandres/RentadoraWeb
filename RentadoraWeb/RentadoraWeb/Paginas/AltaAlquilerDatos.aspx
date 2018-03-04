@@ -32,6 +32,7 @@
         <asp:TextBox ID="txtHoraE" runat="server" TextMode="Time" CssClass="borde"></asp:TextBox>
         <asp:Label ID="Label5" runat="server" Text="Marcas: " CssClass="etiqueta"></asp:Label>
         <asp:DropDownList ID="listMarca" runat="server" CssClass="borde" OnSelectedIndexChanged="listMarca_SelectedIndexChanged">
+            <asp:ListItem Value="Marca"></asp:ListItem>
         </asp:DropDownList>
         <asp:Label ID="lblModelo" runat="server" Text="Modelos: " CssClass="etiqueta" Visible="False"></asp:Label>
         <asp:DropDownList ID="listModelo" runat="server" CssClass="borde" Visible="False">
