@@ -113,7 +113,10 @@
   <ItemGroup>
     <Content Include="Paginas\AltaAlquiler.aspx" />
     <Content Include="Paginas\AltaAlquilerDatos.aspx" />
-    <Content Include="Paginas\AltaCliente.aspx" />
+    <Content Include="Paginas\AltaClienteParticular.aspx" />
+    <Content Include="Paginas\AltaClienteEmpresa.aspx" />
+    <Content Include="Paginas\CerrarSesion.aspx" />
+    <Content Include="Paginas\Inicio.aspx" />
     <Content Include="ScriptsRentadora\bootstrap.bundle.js" />
     <Content Include="ScriptsRentadora\bootstrap.css" />
     <Content Include="ScriptsRentadora\jquery-ui.js" />
@@ -155,12 +158,33 @@
     <Compile Include="Paginas\AltaAlquilerDatos.aspx.designer.cs">
       <DependentUpon>AltaAlquilerDatos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Paginas\AltaCliente.aspx.cs">
-      <DependentUpon>AltaCliente.aspx</DependentUpon>
+    <Compile Include="Paginas\AltaClienteParticular.aspx.cs">
+      <DependentUpon>AltaClienteParticular.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Paginas\AltaCliente.aspx.designer.cs">
-      <DependentUpon>AltaCliente.aspx</DependentUpon>
+    <Compile Include="Paginas\AltaClienteParticular.aspx.designer.cs">
+      <DependentUpon>AltaClienteParticular.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\AltaClienteEmpresa.aspx.cs">
+      <DependentUpon>AltaClienteEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\AltaClienteEmpresa.aspx.designer.cs">
+      <DependentUpon>AltaClienteEmpresa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\CerrarSesion.aspx.cs">
+      <DependentUpon>CerrarSesion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\CerrarSesion.aspx.designer.cs">
+      <DependentUpon>CerrarSesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

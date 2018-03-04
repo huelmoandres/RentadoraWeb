@@ -39,10 +39,10 @@
         <asp:Label ID="Label6" runat="server" Text="Vehículos disponibles: " CssClass="etiqueta" Visible="False"></asp:Label>
         <asp:GridView ID="GridView1" runat="server" CssClass="etiqueta">
         </asp:GridView>
-        <asp:CustomValidator ID="CustomValidator1" runat="server" ClientValidationFunction="validarVacio" ControlToValidate="fechaI" CssClass="etiqueta" ErrorMessage="-La fecha no puede ser vacía " ValidateEmptyText="True" ForeColor="Red"></asp:CustomValidator>
-        <asp:CustomValidator ID="CustomValidator2" runat="server" ClientValidationFunction="validarVacio" ControlToValidate="fechaE" CssClass="etiqueta" ErrorMessage="-La fecha no puede ser vacía" ForeColor="Red" ValidateEmptyText="True"></asp:CustomValidator>
-        <asp:CustomValidator ID="CustomValidator3" runat="server" ClientValidationFunction="validarVacio" ControlToValidate="txtHoraI" CssClass="etiqueta" ErrorMessage="-La hora no puede ser vacía" ForeColor="Red" ValidateEmptyText="True"></asp:CustomValidator>
-        <asp:CustomValidator ID="CustomValidator4" runat="server" ClientValidationFunction="validarVacio" ControlToValidate="txtHoraE" CssClass="etiqueta" ErrorMessage="-La hora no puede ser vacía" ForeColor="Red" ValidateEmptyText="True"></asp:CustomValidator>
-        <asp:Button ID="Button2" runat="server" Text="Button" CssClass="boton btn btn-success" />
+        <asp:CustomValidator ID="CustomValidator1" runat="server" ClientValidationFunction="validarVacio" ControlToValidate="fechaI" CssClass="etiqueta" ErrorMessage="-La fecha inicio no puede ser vacía " ValidateEmptyText="True" ForeColor="Red" Width="283px"></asp:CustomValidator>
+        <asp:CustomValidator ID="CustomValidator2" runat="server" ClientValidationFunction="validarVacio" ControlToValidate="fechaE" CssClass="etiqueta" ErrorMessage="-La fecha de entrega no puede ser vacía" ForeColor="Red" ValidateEmptyText="True" Width="323px"></asp:CustomValidator>
+        <asp:CustomValidator ID="CustomValidator3" runat="server" ClientValidationFunction="validarVacio" ControlToValidate="txtHoraI" CssClass="etiqueta" ErrorMessage="-La hora de inicio no puede ser vacía" ForeColor="Red" ValidateEmptyText="True" Width="299px"></asp:CustomValidator>
+        <asp:CustomValidator ID="CustomValidator4" runat="server" ClientValidationFunction="validarVacio" ControlToValidate="txtHoraE" CssClass="etiqueta" ErrorMessage="-La hora de entrega no puede ser vacía" ForeColor="Red" ValidateEmptyText="True" Width="314px"></asp:CustomValidator>
+        <asp:Button ID="Button2" runat="server" Text="Alquilar" CssClass="boton btn btn-success" />
     </div>
 </asp:Content>
