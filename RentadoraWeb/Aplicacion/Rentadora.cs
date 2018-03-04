@@ -104,7 +104,7 @@ namespace Aplicacion
 
         }
 
-        public void LeerDatosVehiculos(string rutaArchivo)
+        /*public void LeerDatosVehiculos(string rutaArchivo)
         {
             StreamReader str = null;
             try
@@ -133,7 +133,7 @@ namespace Aplicacion
                     str.Close();
             }
 
-        }
+        }*/
         #endregion
     }
 }
