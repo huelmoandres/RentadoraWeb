@@ -94,10 +94,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\estilos.css" />
+    <Content Include="CSS\jquery-ui.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Login.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Maestra\PaginaPrincipal.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -106,11 +111,81 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Paginas\AltaAlquiler.aspx" />
+    <Content Include="Paginas\AltaAlquilerDatos.aspx" />
+    <Content Include="Paginas\AltaClienteParticular.aspx" />
+    <Content Include="Paginas\AltaClienteEmpresa.aspx" />
+    <Content Include="Paginas\CerrarSesion.aspx" />
+    <Content Include="Paginas\Inicio.aspx" />
+    <Content Include="ScriptsRentadora\bootstrap.bundle.js" />
+    <Content Include="ScriptsRentadora\bootstrap.css" />
+    <Content Include="ScriptsRentadora\jquery-ui.js" />
+    <Content Include="ScriptsRentadora\jquery.js" />
+    <Content Include="ScriptsRentadora\validaciones.js" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Maestra\PaginaPrincipal.Master.cs">
+      <DependentUpon>PaginaPrincipal.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Maestra\PaginaPrincipal.Master.designer.cs">
+      <DependentUpon>PaginaPrincipal.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\AltaAlquiler.aspx.cs">
+      <DependentUpon>AltaAlquiler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\AltaAlquiler.aspx.designer.cs">
+      <DependentUpon>AltaAlquiler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\AltaAlquilerDatos.aspx.cs">
+      <DependentUpon>AltaAlquilerDatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\AltaAlquilerDatos.aspx.designer.cs">
+      <DependentUpon>AltaAlquilerDatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\AltaClienteParticular.aspx.cs">
+      <DependentUpon>AltaClienteParticular.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\AltaClienteParticular.aspx.designer.cs">
+      <DependentUpon>AltaClienteParticular.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\AltaClienteEmpresa.aspx.cs">
+      <DependentUpon>AltaClienteEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\AltaClienteEmpresa.aspx.designer.cs">
+      <DependentUpon>AltaClienteEmpresa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\CerrarSesion.aspx.cs">
+      <DependentUpon>CerrarSesion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\CerrarSesion.aspx.designer.cs">
+      <DependentUpon>CerrarSesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +197,10 @@
       <Project>{dea0416e-4e69-46db-9d78-8525bbf21711}</Project>
       <Name>Dominio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Binario\" />
+    <Folder Include="Bitacoras\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

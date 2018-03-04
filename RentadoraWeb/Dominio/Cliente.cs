@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    abstract class Cliente
+    public abstract class Cliente
     {
         private string telefono;
         private int anioInicio;
@@ -41,6 +41,41 @@ namespace Dominio
             {
                 anioInicio = value;
             }
+        }
+
+        public static bool ValidoTel(string tel)
+        {
+            bool resultado = false;
+            if(tel != "")
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
+        public static bool ValidoAnio(int anio)
+        {
+            bool resultado = false;
+            if (anio > 0)
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
+        public enum ErroresAlta
+        {
+            Ok,
+            ErrorTelefono,
+            ErrorAnioInicio,
+            ErrorCi,
+            ErrorDocumento,
+            ErrorPaisDoc,
+            ErrorNombre,
+            ErrorApellido,
+            ErrorRut,
+            ErrorRazonSocial,
+            ErrorNomContacto
         }
     }
 }

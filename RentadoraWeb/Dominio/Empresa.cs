@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Empresa : Cliente
+    public class Empresa : Cliente
     {
         private int rut;
         private string razonSocial;
@@ -56,6 +56,36 @@ namespace Dominio
             {
                 nombreContacto = value;
             }
+        }
+
+        public static bool ValidoRazonSocial(string razonSocial)
+        {
+            bool resultado = false;
+            if (razonSocial != "")
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
+        public static bool ValidoNombreContacto(string nomContacto)
+        {
+            bool resultado = false;
+            if (nomContacto != "")
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
+        public static bool ValidoRut(int rut)
+        {
+            bool resultado = false;
+            if (rut > 0)
+            {
+                resultado = true;
+            }
+            return resultado;
         }
     }
 }

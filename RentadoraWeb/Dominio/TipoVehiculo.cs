@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class TipoVehiculo
+    [Serializable]
+    public class TipoVehiculo
     {
         private string marca;
         private string modelo;
@@ -56,6 +57,44 @@ namespace Dominio
             {
                 precioDiario = value;
             }
+        }
+
+        public static bool ValidoMarca(string marca)
+        {
+            bool resultado = false;
+            if(marca != "")
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
+        public static bool ValidoModelo(string modelo)
+        {
+            bool resultado = false;
+            if (modelo != "")
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
+        public static bool ValidoPrecio(double precio)
+        {
+            bool resultado = false;
+            if (precio > 0)
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+
+        public enum ErroresAlta
+        {
+            Ok,
+            ErrorMarca,
+            ErrorModelo,
+            ErrorPrecioDiario
         }
     }
 }
