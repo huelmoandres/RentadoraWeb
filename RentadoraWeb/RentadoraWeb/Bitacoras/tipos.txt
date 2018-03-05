@@ -1,11 +1,4 @@
 Fiat@Uno@30
-
 Chevrolet@Corsa@25
-
 Nissan@Sentra@45
-
 Renault@Clio@40
-Fiat@Fiorino@25
-Volkswagen@Gol@60
-Audi@A4@100
-Audi@A5@120
