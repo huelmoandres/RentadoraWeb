@@ -40,6 +40,34 @@ namespace RentadoraWeb.Paginas
             {
                 Response.Redirect("/Login.aspx");
             }
+            if (Request.QueryString["cod"] != null &&
+               !string.IsNullOrEmpty(Request.QueryString["cod"].ToString()))
+            {
+                int codigo = 0;
+                bool ok =
+                    int.TryParse(Request.QueryString["cod"].ToString(), out codigo);
+                if (ok)
+                {
+                    Producto p =
+                        Empresa.Instancia.BuscarProducto(codigo);
+                    if (p != null)
+                    {
+                        cargarDatos(p);
+                    }
+                    else
+                    {
+                        master.LblMensajes.Text = "No se ha encontrado el producto";
+                    }
+                }
+                else
+                {
+                    master.LblMensajes.Text = "No se ha proporcionado un código válido";
+                }
+            }
+            else
+            {
+                master.LblMensajes.Text = "El codigo de producto no se ha proporcionado";
+            }
         }
 
         protected void listMarca_SelectedIndexChanged(object sender, EventArgs e)
