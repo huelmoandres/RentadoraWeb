@@ -66,6 +66,19 @@ namespace Dominio
             return existe;
         }
 
+        public List<TipoVehiculo> ObtenerModeloMismaMarca(string marca)
+        {
+            List<TipoVehiculo> retorno = new List<TipoVehiculo>();
+            foreach(TipoVehiculo t in tipos)
+            {
+                if(t.Marca == marca)
+                {
+                    retorno.Add(t);
+                }
+            }
+            return retorno;
+        }
+
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("listaTipoVehiculos", this.tipos, typeof(List<TipoVehiculo>));
