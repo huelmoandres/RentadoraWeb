@@ -31,10 +31,11 @@
         <asp:Label ID="Label4" runat="server" Text="Hora entrega: " CssClass="etiqueta"></asp:Label>
         <asp:TextBox ID="txtHoraE" runat="server" TextMode="Time" CssClass="borde"></asp:TextBox>
         <asp:Label ID="Label5" runat="server" Text="Marcas: " CssClass="etiqueta"></asp:Label>
-        <asp:DropDownList ID="listMarca" runat="server" CssClass="borde" OnSelectedIndexChanged="listMarca_SelectedIndexChanged" AutoPostBack="True">
+        <asp:DropDownList ID="listMarca" runat="server" CssClass="borde" AutoPostBack="True" OnSelectedIndexChanged="listMarca_SelectedIndexChanged">
+            <asp:ListItem Selected="True" Value="1">Seleccionar Marca</asp:ListItem>
         </asp:DropDownList>
         <asp:Label ID="lblModelo" runat="server" Text="Modelos: " CssClass="etiqueta"></asp:Label>
-        <asp:DropDownList ID="listModelo" runat="server" CssClass="borde" AutoPostBack="True">
+        <asp:DropDownList ID="listModelo" runat="server" CssClass="borde">
         </asp:DropDownList>
         <asp:Label ID="Label6" runat="server" Text="Vehículos disponibles: " CssClass="etiqueta" Visible="False"></asp:Label>
         <asp:GridView ID="GridView1" runat="server" CssClass="etiqueta">
