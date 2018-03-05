@@ -24,8 +24,6 @@ namespace Aplicacion
 
         public void CargarDatosPrueba()
         {
-            this.AltaTipoVehiculo("Fiat", "147", 150);
-            this.AltaTipoVehiculo("Fiorino", "147", 150);
         }
 
         #region Ingreso de usuarios
@@ -59,9 +57,9 @@ namespace Aplicacion
         }
 
         public List<TipoVehiculo> ObtenerModeloMismaMarca(string marca)
-    +   {
-    +       return CTipoVehiculo.Instancia.ObtenerModeloMismaMarca(marca);
-    +   }
+       {
+          return CTipoVehiculo.Instancia.ObtenerModeloMismaMarca(marca);
+       }
         #endregion
 
         #region Controlador CVehiculo
