@@ -13,33 +13,33 @@ namespace RentadoraWeb.Paginas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["usuario"] != null)
-            //{
-            //    if ((byte)Session["rol"] == 0)
-            //    {
-            if (!IsPostBack)
+            if (Session["usuario"] != null)
             {
-                List<TipoVehiculo> marcas = Rentadora.Instancia.ListadoTipos();
-                this.listMarca.DataTextField = "Marca";
-                this.listMarca.DataValueField = "Marca";
-                this.listMarca.DataSource = marcas;
-                this.listMarca.DataBind();
-                List<TipoVehiculo> modelos = Rentadora.Instancia.ObtenerModeloMismaMarca(this.listMarca.SelectedValue);
-                this.listModelo.DataTextField = "Modelo";
-                this.listModelo.DataValueField = "Modelo";
-                this.listModelo.DataSource = modelos;
-                this.listModelo.DataBind();
+                if ((byte)Session["rol"] == 0)
+                {
+                    if (!IsPostBack)
+                    {
+                        List<TipoVehiculo> marcas = Rentadora.Instancia.ListadoTipos();
+                        this.listMarca.DataTextField = "Marca";
+                        this.listMarca.DataValueField = "Marca";
+                        this.listMarca.DataSource = marcas;
+                        this.listMarca.DataBind();
+                        List<TipoVehiculo> modelos = Rentadora.Instancia.ObtenerModeloMismaMarca(this.listMarca.SelectedValue);
+                        this.listModelo.DataTextField = "Modelo";
+                        this.listModelo.DataValueField = "Modelo";
+                        this.listModelo.DataSource = modelos;
+                        this.listModelo.DataBind();
+                    }
+                }
+                else
+                {
+                    Response.Redirect("Inicio.aspx");
+                }
             }
-            //    }
-            //    else
-            //    {
-            //        Response.Redirect("Inicio.aspx");
-            //    }
-            //}
-            //else
-            //{
-            //    Response.Redirect("Login.aspx");
-            //}
+            else
+            {
+                Response.Redirect("/Login.aspx");
+            }
         }
 
         protected void listMarca_SelectedIndexChanged(object sender, EventArgs e)

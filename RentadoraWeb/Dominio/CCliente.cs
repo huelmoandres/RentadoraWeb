@@ -54,7 +54,7 @@ namespace Dominio
             {
                 resultado = Particular.ErroresAlta.ErrorPaisDoc;
             }
-            else if (this.ExisteParticular(ci))
+            else if (this.ExisteParticular(ci) != null)
             {
                 resultado = Particular.ErroresAlta.ErrorExiste;
             }
@@ -86,7 +86,7 @@ namespace Dominio
             {
                 resultado = Empresa.ErroresAlta.ErrorNomContacto;
             }
-            else if (this.ExisteEmpresa(rut))
+            else if (this.ExisteEmpresa(rut) != null)
             {
                 resultado = Empresa.ErroresAlta.ErrorExiste;
             }
@@ -98,8 +98,9 @@ namespace Dominio
             return resultado;
         }
 
-        public bool ExisteParticular(string ci)
+        public Particular ExisteParticular(string ci)
         {
+            Particular particular = null;
             bool existe = false;
             int i = 0;
             while (i < this.clientes.Count && !existe)
@@ -110,15 +111,17 @@ namespace Dominio
                     if (p.Ci == ci)
                     {
                         existe = true;
+                        particular = p;
                     }
                 }
                 i++;
             }
-            return existe;
+            return particular;
         }
 
-        public bool ExisteEmpresa(int rut)
+        public Empresa ExisteEmpresa(int rut)
         {
+            Empresa empresa = null;
             bool existe = false;
             int i = 0;
             while (i < this.clientes.Count && !existe)
@@ -129,11 +132,17 @@ namespace Dominio
                     if(e.Rut == rut)
                     {
                         existe = true;
+                        empresa = e;
                     }
                 }
                 i++;
             }
-            return existe;
+            return empresa;
+        }
+
+        public string[] TipoDocumentos()
+        {
+           return Enum.GetNames(typeof(Particular.EnumTipoDocumento));
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

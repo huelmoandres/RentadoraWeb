@@ -11,7 +11,30 @@ namespace RentadoraWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["usuario"] != null)
+            {
+                if ((byte)Session["rol"] == 0)
+                {
+                    this.menuAdmin.Visible = false;
+                    this.menuGerente.Visible = false;
+                }
+                else if ((byte)Session["rol"] == 1)
+                {
+                    this.menuVendedor.Visible = false;
+                    this.menuGerente.Visible = false;
+                }
+                else if ((byte)Session["rol"] == 2)
+                {
+                    this.menuVendedor.Visible = false;
+                    this.menuAdmin.Visible = false;
+                }
+            }
+            else
+            {
+                this.menuVendedor.Visible = false;
+                this.menuAdmin.Visible = false;
+                this.menuGerente.Visible = false;
+            }
         }
     }
 }

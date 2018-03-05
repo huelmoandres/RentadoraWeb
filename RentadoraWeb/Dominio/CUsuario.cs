@@ -56,6 +56,33 @@ namespace Dominio
             return usu;
         }
 
+        public Usuario.ErroresAlta AltaUsuario(string mail, string pass, byte rol)
+        {
+            Usuario.ErroresAlta resultado = Usuario.ErroresAlta.Ok;
+            if (!Usuario.ValidoMail(mail))
+            {
+                resultado = Usuario.ErroresAlta.ErrorMail;
+            }
+            else if (!Usuario.ValidoPass(pass))
+            {
+                resultado = Usuario.ErroresAlta.ErrorPass;
+            }
+            else if (!Usuario.ValidoRol(rol))
+            {
+                resultado = Usuario.ErroresAlta.ErrorRol;
+            }
+            else if (this.BuscarUsuario(mail) != null)
+            {
+                resultado = Usuario.ErroresAlta.ErrorExiste;
+            }
+            else
+            {
+                Usuario u = new Usuario(mail, pass, rol);
+                usuarios.Add(u);
+            }
+            return resultado;
+        }
+
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("listaUsuarios", this.usuarios, typeof(List<Usuario>));

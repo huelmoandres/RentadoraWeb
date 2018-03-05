@@ -70,7 +70,7 @@ a:hover
 .boton 
 {
 	display: inline-block;
-    float: right;
+    clear: both;
 }
 
 .borde 
@@ -90,6 +90,24 @@ a:hover
     clear: left;
     text-align: right;
     width: 250px;
+}
+
+.error
+{
+    display: inline-block;
+    color: red;
+    clear: both;
+    text-align: left;
+    float: left;
+}
+
+.exito
+{
+    display: inline-block;
+    color: green;
+    clear: both;
+    text-align: left;
+    float: left;
 }
 
 .validators 

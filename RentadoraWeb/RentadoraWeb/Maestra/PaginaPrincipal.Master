@@ -18,14 +18,28 @@
     <div class="cuerpo">
         <div class="menu"> 
             <nav>
-                <ul class="nav nav-tabs navbar">
-                    <li><a href="index.html">Introducción</a></li>
-                    <li><a href="#">Pruebas</a></li>
-                    <li><a href="#">Participantes</a></li>
-                    <li><a href="#">Ganador</a></li>
-                    <li><a href="#">Premios</a></li>
-                    <li><a href="#">Posiciones</a></li>
-                </ul>
+                <asp:Panel ID="menuAdmin" runat="server">
+                    <ul class="nav nav-tabs navbar">
+                        <li><a href="/Paginas/Inicio.aspx">Inicio</a></li>
+                        <li><a href="#">Alta Manual</a></li>
+                        <li><a href="/Paginas/CerrarSesion.aspx">Cerrar Sesión</a></li>
+                    </ul>
+                </asp:Panel>
+                <asp:Panel ID="menuVendedor" runat="server">
+                    <ul class="nav nav-tabs navbar">
+                        <li><a href="/Paginas/Inicio.aspx">Inicio</a></li>
+                        <li><a href="#">Alta Cliente</a></li>
+                        <li><a href="#">Alta Alquiler</a></li>
+                        <li><a href="#">Baja Alquiler</a></li>
+                        <li><a href="/Paginas/CerrarSesion.aspx">Cerrar Sesión</a></li>
+                    </ul>
+                </asp:Panel>
+                <asp:Panel ID="menuGerente" runat="server">
+                    <ul class="nav nav-tabs navbar">
+                        <li><a href="/Paginas/Inicio.aspx">Inicio</a></li>
+                        <li><a href="/Paginas/CerrarSesion.aspx">Cerrar Sesión</a></li>
+                    </ul>
+                </asp:Panel>
             </nav>
         </div>
         <asp:ContentPlaceHolder ID="Body" runat="server">

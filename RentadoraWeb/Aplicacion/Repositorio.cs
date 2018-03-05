@@ -14,11 +14,13 @@ namespace Aplicacion
     {
         private string rutaArchivo;
         private CTipoVehiculo ctipoVehiculo;
+        private CUsuario cusuario;
 
         public Repositorio(string rutaArchivo)
         {
             this.rutaArchivo = rutaArchivo;
             this.ctipoVehiculo = CTipoVehiculo.Instancia;
+            this.cusuario = CUsuario.Instancia;
         }
 
         public void Serializable()

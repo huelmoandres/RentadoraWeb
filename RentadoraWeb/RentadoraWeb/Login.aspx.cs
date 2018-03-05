@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,7 +15,7 @@ namespace RentadoraWeb
         {
             if(Session["usuario"] != null)
             {
-                Session.Abandon();
+                Response.Redirect("Paginas/Inicio.aspx");
             }
         }
 
@@ -33,7 +33,7 @@ namespace RentadoraWeb
                     Session["email"] = u.Mail;
                     Session["rol"] = u.Rol;
                     if (u.Rol == 1)
-                    Response.Redirect("Inicio.aspx");
+                    Response.Redirect("Paginas/Inicio.aspx");
                 }
                 else
                 {

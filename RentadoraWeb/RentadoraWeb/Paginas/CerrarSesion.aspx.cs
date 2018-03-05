@@ -7,12 +7,12 @@ using System.Web.UI.WebControls;
 
 namespace RentadoraWeb.Paginas
 {
-    public partial class CerrarSesion : System.Web.UI.Page
-    {
+	public partial class CerrarSesion1 : System.Web.UI.Page
+	{
         protected void Page_Load(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("~/Login.aspx");
+            Response.Redirect("/Login.aspx");
         }
     }
 }

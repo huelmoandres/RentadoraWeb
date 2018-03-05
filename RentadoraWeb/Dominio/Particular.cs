@@ -92,7 +92,7 @@ namespace Dominio
         public static bool ValidoCi(string ci)
         {
             bool resultado = false;
-            if (ci.Length >= 7 && ci.Length <=9)
+            if (ci.Length > 3)
             {
                 resultado = true;
             }
@@ -149,7 +149,7 @@ namespace Dominio
         public override int CalcularDescuento()
         {
             int resultado = 0;
-            if(paisDocumento == "Uruguay")
+            if(paisDocumento.ToLowerInvariant() == "uruguay")
             {
                 resultado = Particular.descuento;
             }

@@ -24,12 +24,25 @@ namespace Aplicacion
 
         public void CargarDatosPrueba()
         {
+            this.AltaUsuario("vendedor1", "vendedor1", 0);
+            this.AltaUsuario("vendedor2", "vendedor2", 0);
+            this.AltaUsuario("administrador1", "administrador1", 1);
+            this.AltaUsuario("administrador2", "administrador2", 1);
+            this.AltaUsuario("gerente1", "gerente1", 2);
+            this.AltaUsuario("gerente2", "gerente2", 2);
         }
 
         #region Ingreso de usuarios
         public Usuario Login(string email, string pass)
         {
             return CUsuario.Instancia.Login(email, pass);
+        }
+        #endregion
+
+        #region Controlador CUsuario
+        public Usuario.ErroresAlta AltaUsuario(string mail, string pass, byte rol)
+        {
+            return CUsuario.Instancia.AltaUsuario(mail, pass, rol);
         }
         #endregion
 
@@ -42,6 +55,21 @@ namespace Aplicacion
         public Empresa.ErroresAlta AltaEmpresa(string tel, int anio, int rut, string razonSocial, string nombreContacto)
         {
             return CCliente.Instancia.AltaEmpresa(tel, anio, rut, razonSocial, nombreContacto);
+        }
+
+        public Particular ExisteParticular(string ci)
+        {
+            return CCliente.Instancia.ExisteParticular(ci);
+        }
+
+        public Empresa ExisteEmpresa(int rut)
+        {
+            return CCliente.Instancia.ExisteEmpresa(rut);
+        }
+
+        public string[] TipoDocumentos()
+        {
+            return CCliente.Instancia.TipoDocumentos();
         }
         #endregion
 

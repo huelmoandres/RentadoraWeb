@@ -10,6 +10,6 @@
 namespace RentadoraWeb.Paginas {
     
     
-    public partial class CerrarSesion {
+    public partial class CerrarSesion1 {
     }
 }
