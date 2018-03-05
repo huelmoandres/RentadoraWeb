@@ -57,6 +57,11 @@ namespace Aplicacion
         {
             return CTipoVehiculo.Instancia.ListadoTipos();
         }
+
+        public List<TipoVehiculo> ObtenerModeloMismaMarca(string marca)
+    +   {
+    +       return CTipoVehiculo.Instancia.ObtenerModeloMismaMarca(marca);
+    +   }
         #endregion
 
         #region Controlador CVehiculo

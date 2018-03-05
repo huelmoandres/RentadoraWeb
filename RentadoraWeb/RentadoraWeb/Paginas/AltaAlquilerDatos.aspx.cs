@@ -19,10 +19,16 @@ namespace RentadoraWeb.Paginas
             //    {
             if (!IsPostBack)
             {
-            List<TipoVehiculo> marcas = Rentadora.Instancia.ListadoTipos();
-            this.listMarca.DataTextField = "Marca";
-            this.listMarca.DataSource = marcas;
-            this.listMarca.DataBind();
+                List<TipoVehiculo> marcas = Rentadora.Instancia.ListadoTipos();
+                this.listMarca.DataTextField = "Marca";
+                this.listMarca.DataValueField = "Marca";
+                this.listMarca.DataSource = marcas;
+                this.listMarca.DataBind();
+                List<TipoVehiculo> modelos = Rentadora.Instancia.ObtenerModeloMismaMarca(this.listMarca.SelectedValue);
+                this.listModelo.DataTextField = "Modelo";
+                this.listModelo.DataValueField = "Modelo";
+                this.listModelo.DataSource = modelos;
+                this.listModelo.DataBind();
             }
             //    }
             //    else
@@ -39,15 +45,13 @@ namespace RentadoraWeb.Paginas
         protected void listMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
             string option = this.listMarca.SelectedValue;
-            if (option == "Fiat")
+            if (option != "")
             {
-                this.lblModelo.Visible = false;
-                this.listModelo.Visible = false;
-            }
-            else if(option == "Fiorino")
-            {
-                this.lblModelo.Visible = true;
-                this.listModelo.Visible = true;
+                List<TipoVehiculo> modelos = Rentadora.Instancia.ObtenerModeloMismaMarca(option);
+                this.listModelo.DataTextField = "Modelo";
+                this.listModelo.DataValueField = "Modelo";
+                this.listModelo.DataSource = modelos;
+                this.listModelo.DataBind();
             }
         }
     }
