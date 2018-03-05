@@ -33,7 +33,7 @@ namespace RentadoraWeb.Paginas
             {
                 if(Rentadora.Instancia.ExisteParticular(documento) != null)
                 {
-                    Response.Redirect("AltaClienteParticular.aspx?doc=" + documento);
+                    Response.Redirect("AltaAlquilerDatos.aspx?doc=" + documento);
                 }
                 else
                 {
@@ -48,7 +48,7 @@ namespace RentadoraWeb.Paginas
                 }
                 else if (Rentadora.Instancia.ExisteEmpresa(rut) != null)
                 {
-                    Response.Redirect("AltaClienteEmpresa.aspx?rut=" + rut);
+                    Response.Redirect("AltaAlquilerDatos.aspx?rut=" + rut);
                 }
                 else
                 {
