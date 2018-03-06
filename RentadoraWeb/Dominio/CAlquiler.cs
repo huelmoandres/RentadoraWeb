@@ -23,7 +23,7 @@ namespace Dominio
             }
         }
 
-        public Alquiler.ErroresAlta AltaAlquiler(DateTime fechaInicio, DateTime fechaFinal, int horaInicio, int horaFinal, TipoVehiculo vehiculo, Cliente cliente)
+        public Alquiler.ErroresAlta AltaAlquiler(DateTime fechaInicio, DateTime fechaFinal, int horaInicio, int horaFinal, TipoVehiculo vehiculo, Cliente cliente, string matricula)
         {
             Alquiler.ErroresAlta resultado = Alquiler.ErroresAlta.Ok;
             if (!Alquiler.ValidoFecha(fechaInicio))
@@ -52,10 +52,41 @@ namespace Dominio
             }
             else
             {
-                Alquiler a = new Alquiler(fechaInicio, fechaFinal, horaInicio, horaFinal, vehiculo, cliente, false);
+                Alquiler a = new Alquiler(fechaInicio, fechaFinal, horaInicio, horaFinal, vehiculo, cliente, matricula, false);
                 alquileres.Add(a);
             }
             return resultado;
+        }
+
+        public List<string> MatriculasDisponibles(List<string> matriculas, DateTime fechaI, DateTime fechaF)
+        {
+            List<string> matriculasDisp = new List<string>();
+            if(matriculas.Count > 0)
+            {
+                if(alquileres.Count > 0)
+                {
+                    for (int i = 0; i < alquileres.Count; i++)
+                    {
+                        if (matriculas.Contains(alquileres[i].Matricula))
+                        {
+                            if (!((alquileres[i].FechaInicio >= fechaI && alquileres[i].FechaInicio <= fechaF) ||
+                                (alquileres[i].FechaFinal >= fechaI && alquileres[i].FechaFinal <= fechaF)))
+                            {
+                                matriculasDisp.Add(alquileres[i].Matricula);
+                            } 
+                        }
+                        else
+                        {
+                            matriculasDisp.Add(alquileres[i].Matricula);
+                        }
+                    }
+                }
+                else
+                {
+                    matriculasDisp = matriculas;
+                }
+            }
+            return matriculasDisp;
         }
         
         public void GetObjectData(SerializationInfo info, StreamingContext context)

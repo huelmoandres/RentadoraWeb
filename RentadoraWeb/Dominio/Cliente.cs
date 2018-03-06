@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
+    [Serializable]
     public abstract class Cliente
     {
         private string telefono;

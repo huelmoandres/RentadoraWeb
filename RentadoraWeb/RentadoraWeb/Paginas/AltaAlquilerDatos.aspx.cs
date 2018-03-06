@@ -50,6 +50,28 @@ namespace RentadoraWeb.Paginas
                                 this.listModelo.DataBind();
                                 this.lblError.Text = "";
                                 this.lblExito.Text = "";
+                                string marca = this.listMarca.SelectedValue;
+                                string modelo = this.listModelo.SelectedValue;
+                                DateTime fechaI;
+                                DateTime fechaF;
+                                if (marca != "" && modelo != "")
+                                {
+                                    if (DateTime.TryParse(this.fechaI.Text, out fechaI))
+                                    {
+                                        if (DateTime.TryParse(this.fechaE.Text, out fechaF))
+                                        {
+                                            List<string> matriculas = Rentadora.Instancia.MatriculasPorMarcaModelo(marca, modelo);
+                                            List<string> disponibles = Rentadora.Instancia.MatriculasDisponibles(matriculas, fechaI, fechaF);
+                                            List<Vehiculo> vehiculos = Rentadora.Instancia.VehiculosDisponibles(disponibles);
+                                            if (vehiculos.Count > 0)
+                                            {
+                                                this.lblError.Text = "";
+                                                this.GvDisponibles.DataSource = vehiculos;
+                                                this.GvDisponibles.DataBind();
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                         else
@@ -86,7 +108,36 @@ namespace RentadoraWeb.Paginas
             }
         }
 
-        protected void btnAlta_Click(object sender, EventArgs e)
+        protected void listModelo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string marca = this.listMarca.SelectedValue;
+            string modelo = this.listModelo.SelectedValue;
+            DateTime fechaI;
+            DateTime fechaF;
+            if (marca != "" && modelo != "")
+            {
+                if (DateTime.TryParse(this.fechaI.Text, out fechaI))
+                {
+                    if (DateTime.TryParse(this.fechaE.Text, out fechaF))
+                    {
+                        List<string> matriculas = Rentadora.Instancia.MatriculasPorMarcaModelo(marca, modelo);
+                        List<string> disponibles = Rentadora.Instancia.MatriculasDisponibles(matriculas, fechaI, fechaF);
+                        List<Vehiculo> vehiculos = Rentadora.Instancia.VehiculosDisponibles(disponibles);
+                        if (vehiculos.Count > 0) {
+                            this.lblError.Text = "";
+                            this.GvDisponibles.Visible = true;
+                            this.GvDisponibles.DataSource = vehiculos;
+                            this.GvDisponibles.DataBind();
+                        } else {
+                            this.GvDisponibles.Visible = false;
+                            this.lblError.Text = "No se encuentran vehículos disponibles para la marca: " + marca + ", modelo " + modelo;
+                        }
+                    }
+                }
+            }
+        }
+
+        protected void GvDisponibles_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Request.QueryString["doc"] != null && Request.QueryString["cliente"] != null &&
                             !string.IsNullOrEmpty(Request.QueryString["doc"].ToString()) && !string.IsNullOrEmpty(Request.QueryString["cliente"].ToString()))
@@ -116,6 +167,7 @@ namespace RentadoraWeb.Paginas
                 int horaEntrega;
                 string marca = this.listMarca.SelectedValue;
                 string modelo = this.listModelo.SelectedValue;
+                string matricula = this.GvDisponibles.SelectedRow.Cells[0].Text;
                 TipoVehiculo tv = Rentadora.Instancia.ExisteTipo(marca, modelo);
 
                 if (!DateTime.TryParse(this.fechaI.Text, out fechaInicio))
@@ -136,7 +188,7 @@ namespace RentadoraWeb.Paginas
                 }
                 else
                 {
-                    Alquiler.ErroresAlta alta = Rentadora.Instancia.AltaAlquiler(fechaInicio, fechaFin, horaInicio, horaEntrega, tv, c);
+                    Alquiler.ErroresAlta alta = Rentadora.Instancia.AltaAlquiler(fechaInicio, fechaFin, horaInicio, horaEntrega, tv, c, matricula);
                     if (alta == Alquiler.ErroresAlta.ErrorFecha)
                     {
                         this.lblError.Text = "Debe ingresar una fecha correcta.";

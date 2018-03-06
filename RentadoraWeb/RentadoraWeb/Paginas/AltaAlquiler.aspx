@@ -13,7 +13,7 @@
         <asp:ListItem>Empresa</asp:ListItem>
     </asp:DropDownList>
     <asp:TextBox ID="txtBuscarUsuario" runat="server"></asp:TextBox>
-    <asp:Button ID="btnVerificarUsuario" runat="server" Text="Verificar" OnClick="btnVerificarUsuario_Click" />
+    <asp:Button ID="btnVerificarUsuario" runat="server" CssClass="btn btn-info" Text="Verificar" OnClick="btnVerificarUsuario_Click" />
     <br />
     <asp:Label ID="lblError" runat="server" Text="" CssClass="error"></asp:Label>
     

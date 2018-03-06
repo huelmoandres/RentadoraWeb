@@ -15,8 +15,9 @@ namespace Dominio
         private TipoVehiculo vehiculo;
         private Cliente responsable;
         private bool devuelto;
+        private string matricula;
 
-        public Alquiler(DateTime fechaInicio, DateTime fechaFinal, int horaInicio, int horaFinal, TipoVehiculo vehiculo, Cliente cliente, bool devuelto)
+        public Alquiler(DateTime fechaInicio, DateTime fechaFinal, int horaInicio, int horaFinal, TipoVehiculo vehiculo, Cliente cliente, string matricula, bool devuelto)
         {
             this.FechaInicio = fechaInicio;
             this.FechaFinal = fechaFinal;
@@ -24,6 +25,7 @@ namespace Dominio
             this.HoraFinal = horaFinal;
             this.Vehiculo = vehiculo;
             this.Responsable = responsable;
+            this.Matricula = matricula;
             this.Devuelto = devuelto;
         }
 
@@ -115,6 +117,19 @@ namespace Dominio
             set
             {
                 devuelto = value;
+            }
+        }
+
+        public string Matricula
+        {
+            get
+            {
+                return matricula;
+            }
+
+            set
+            {
+                matricula = value;
             }
         }
 

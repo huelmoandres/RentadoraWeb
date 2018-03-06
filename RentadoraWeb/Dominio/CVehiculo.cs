@@ -20,7 +20,7 @@ namespace Dominio
             get { return instancia; }
         }
 
-        public Vehiculo.ErroresAlta AltaVehiculo(string matricula, TipoVehiculo tipo, int anio, int kilometraje, string foto)
+        public Vehiculo.ErroresAlta AltaVehiculo(string matricula, TipoVehiculo tipo, int anio, int kilometraje, List<string> fotos)
         {
             Vehiculo.ErroresAlta resultado = Vehiculo.ErroresAlta.Ok;
             if (!Vehiculo.ValidoMatricula(matricula))
@@ -39,7 +39,7 @@ namespace Dominio
             {
                 resultado = Vehiculo.ErroresAlta.ErrorKilometraje;
             }
-            else if (!Vehiculo.ValidoFoto(foto))
+            else if (!Vehiculo.ValidoFoto(fotos))
             {
                 resultado = Vehiculo.ErroresAlta.ErrorFoto;
             }
@@ -49,7 +49,7 @@ namespace Dominio
             }
             else
             {
-                Vehiculo v = new Vehiculo(matricula, tipo, anio, kilometraje, foto);
+                Vehiculo v = new Vehiculo(matricula, tipo, anio, kilometraje, fotos);
                 vehiculos.Add(v);
             }
             return resultado;
@@ -68,6 +68,55 @@ namespace Dominio
                 i++;
             }
             return existe;
+        }
+
+        public List<string> ListarFotos(string matricula)
+        {
+            List<string> fotos = null;
+            bool existe = false;
+            int i = 0;
+            while (i < this.vehiculos.Count && !existe)
+            {
+                if (vehiculos[i].Matricula == matricula)
+                {
+                    existe = true;
+                    fotos = vehiculos[i].Fotos;
+                }
+                i++;
+            }
+            return fotos;
+        }
+
+        public List<string> MatriculasPorMarcaModelo(string marca, string modelo)
+        {
+            List<string> matriculas = new List<string>();
+            if(this.vehiculos.Count > 0)
+            {
+                for (int i = 0; i < vehiculos.Count; i++)
+                {
+                    if (vehiculos[i].Tipo.Marca == marca && vehiculos[i].Tipo.Modelo == modelo)
+                    {
+                        matriculas.Add(vehiculos[i].Matricula);
+                    }
+                }
+            }
+            return matriculas;
+        }
+
+        public List<Vehiculo> VehiculosDisponibles(List<string> matriculas)
+        {
+            List<Vehiculo> vehiculosDisp = new List<Vehiculo>();
+            if(matriculas.Count > 0)
+            {
+                for (int i = 0; i < this.vehiculos.Count; i++)
+                {
+                    if (matriculas.Contains(vehiculos[i].Matricula))
+                    {
+                        vehiculosDisp.Add(vehiculos[i]);
+                    }
+                }
+            }
+            return vehiculosDisp;
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

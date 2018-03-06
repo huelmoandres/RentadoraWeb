@@ -30,6 +30,8 @@ namespace Aplicacion
             this.AltaUsuario("administrador2", "administrador2", 1);
             this.AltaUsuario("gerente1", "gerente1", 2);
             this.AltaUsuario("gerente2", "gerente2", 2);
+            this.AltaParticular("091383578", 1996, "46801321", "Cedula", "Uruguay", "Andres", "Huelmo");
+            this.AltaAlquiler(Convert.ToDateTime("06/03/2018"), Convert.ToDateTime("16/03/2018"), 0, 20, ExisteTipo("Fiat", "Uno"), ExisteParticular("46801321"), "123456");
         }
 
         #region Ingreso de usuarios
@@ -96,16 +98,31 @@ namespace Aplicacion
         #endregion
 
         #region Controlador CVehiculo
-        public Vehiculo.ErroresAlta AltaVehiculo(string matricula, TipoVehiculo tipo, int anio, int kilometraje, string foto)
+        public Vehiculo.ErroresAlta AltaVehiculo(string matricula, TipoVehiculo tipo, int anio, int kilometraje, List<string> fotos)
         {
-            return CVehiculo.Instancia.AltaVehiculo(matricula, tipo, anio, kilometraje, foto);
+            return CVehiculo.Instancia.AltaVehiculo(matricula, tipo, anio, kilometraje, fotos);
+        }
+
+        public List<string> MatriculasPorMarcaModelo(string marca, string modelo)
+        {
+            return CVehiculo.Instancia.MatriculasPorMarcaModelo(marca, modelo);
+        }
+
+        public List<Vehiculo> VehiculosDisponibles(List<string> matriculas)
+        {
+            return CVehiculo.Instancia.VehiculosDisponibles(matriculas);
         }
         #endregion
 
         #region Controlador CAlquiler
-        public Alquiler.ErroresAlta AltaAlquiler(DateTime fechaInicio, DateTime fechaFinal, int horaInicio, int horaFinal, TipoVehiculo vehiculo, Cliente cliente)
+        public Alquiler.ErroresAlta AltaAlquiler(DateTime fechaInicio, DateTime fechaFinal, int horaInicio, int horaFinal, TipoVehiculo vehiculo, Cliente cliente, string matricula)
         {
-            return CAlquiler.Instancia.AltaAlquiler(fechaInicio, fechaFinal, horaInicio, horaFinal, vehiculo, cliente);
+            return CAlquiler.Instancia.AltaAlquiler(fechaInicio, fechaFinal, horaInicio, horaFinal, vehiculo, cliente, matricula);
+        }
+
+        public List<string> MatriculasDisponibles(List<string> matriculas, DateTime fechaI, DateTime fechaF)
+        {
+            return CAlquiler.Instancia.MatriculasDisponibles(matriculas, fechaI, fechaF);
         }
         #endregion
 
@@ -140,7 +157,7 @@ namespace Aplicacion
 
         }
 
-        /*public void LeerDatosVehiculos(string rutaArchivo)
+        public void LeerDatosVehiculos(string rutaArchivo)
         {
             StreamReader str = null;
             try
@@ -149,13 +166,26 @@ namespace Aplicacion
                 string linea = "";
                 while ((linea = str.ReadLine()) != null)
                 {
-                    string[] datos = linea.Split('#');
+                    string[] datos = linea.Split('@');
+                    string[] datosFotos = datos[5].Split('#');
+                    List<string> fotos = new List<string>();
                     string matricula = datos[0];
                     string marca = datos[1];
                     string modelo = datos[2];
-                    string anio = datos[2];
-                    string kilometraje = datos[2];
-                    CTipoVehiculo.Instancia.AltaTipoVehiculo(marca, modelo, Convert.ToDouble(precioDiario));
+                    int anio;
+                    int kilometraje;
+                    TipoVehiculo tipo = this.ExisteTipo(marca, modelo);
+                    if(int.TryParse(datos[3], out anio))
+                    {
+                        if (int.TryParse(datos[4], out kilometraje))
+                        {
+                            for (int i = 0; i < datosFotos.Length; i++)
+                            {
+                                fotos.Add(datosFotos[i]);
+                            }
+                            CVehiculo.Instancia.AltaVehiculo(matricula, tipo, anio, kilometraje, fotos);
+                        }
+                    }
                 }
 
             }
@@ -169,7 +199,7 @@ namespace Aplicacion
                     str.Close();
             }
 
-        }*/
+        }
         #endregion
     }
 }

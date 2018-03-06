@@ -6,21 +6,22 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
+    [Serializable]
     public class Vehiculo
     {
         private string matricula;
         private TipoVehiculo tipo;
         private int anio;
         private int kilometraje;
-        List<string> fotos = new List<string>();
+        List<string> fotos;
 
-        public Vehiculo(string matricula, TipoVehiculo tipo, int anio, int kilometraje, string ruta)
+        public Vehiculo(string matricula, TipoVehiculo tipo, int anio, int kilometraje, List<string> fotos)
         {
             this.Matricula = matricula;
             this.Tipo = tipo;
             this.Anio = anio;
             this.Kilometraje = kilometraje;
-            fotos.Add(ruta);
+            this.Fotos = fotos;
         }
 
         public string Matricula
@@ -75,6 +76,27 @@ namespace Dominio
             }
         }
 
+        public List<string> Fotos
+        {
+            get
+            {
+                return fotos;
+            }
+
+            set
+            {
+                fotos = value;
+            }
+        }
+
+        public string FotoPrincipal
+        {
+            get
+            {
+                return this.fotos[0];
+            }
+        }
+
         public static bool ValidoMatricula(string matricula)
         {
             bool resultado = false;
@@ -115,10 +137,10 @@ namespace Dominio
             return resultado;
         }
 
-        public static bool ValidoFoto(string foto)
+        public static bool ValidoFoto(List<string> fotos)
         {
             bool resultado = false;
-            if (foto != "")
+            if (fotos != null)
             {
                 resultado = true;
             }

@@ -21,16 +21,17 @@
                 <asp:Panel ID="menuAdmin" runat="server">
                     <ul class="nav nav-tabs navbar">
                         <li><a href="/Paginas/Inicio.aspx">Inicio</a></li>
-                        <li><a href="#">Alta Manual</a></li>
+                        <li><a href="/Paginas/CargaManual.aspx">Carga Manual</a></li>
                         <li><a href="/Paginas/CerrarSesion.aspx">Cerrar Sesión</a></li>
                     </ul>
                 </asp:Panel>
                 <asp:Panel ID="menuVendedor" runat="server">
                     <ul class="nav nav-tabs navbar">
                         <li><a href="/Paginas/Inicio.aspx">Inicio</a></li>
-                        <li><a href="#">Alta Cliente</a></li>
-                        <li><a href="#">Alta Alquiler</a></li>
-                        <li><a href="#">Baja Alquiler</a></li>
+                        <li><a href="/Paginas/AltaClienteParticular.aspx">Alta Particular</a></li>
+                        <li><a href="/Paginas/AltaClienteEmpresa.aspx">Alta Empresa</a></li>
+                        <li><a href="/Paginas/AltaAlquiler.aspx">Alta Alquiler</a></li>
+                        <li><a href="#">Devolución Alquiler</a></li>
                         <li><a href="/Paginas/CerrarSesion.aspx">Cerrar Sesión</a></li>
                     </ul>
                 </asp:Panel>

@@ -28,7 +28,6 @@ namespace RentadoraWeb.Paginas
             string opcion = this.dwTipoCliente.SelectedValue;
             string documento = this.txtBuscarUsuario.Text;
             int rut;
-            Cliente c = null;
             if(opcion == "Particular")
             {
                 if(Rentadora.Instancia.ExisteParticular(documento) != null)

@@ -36,22 +36,35 @@
                 <asp:ListItem Selected="True" Value="1">Seleccionar Marca</asp:ListItem>
             </asp:DropDownList>
             <asp:Label ID="lblModelo" runat="server" Text="Modelos: " CssClass="etiqueta"></asp:Label>
-            <asp:DropDownList ID="listModelo" runat="server" CssClass="borde" AutoPostBack="True">
+            <asp:DropDownList ID="listModelo" runat="server" CssClass="borde" OnSelectedIndexChanged="listModelo_SelectedIndexChanged" AutoPostBack="True">
             </asp:DropDownList>
             <asp:Label ID="Label6" runat="server" Text="Vehículos disponibles: " CssClass="etiqueta" Visible="False"></asp:Label>
             <asp:GridView ID="GridView1" runat="server" CssClass="etiqueta">
             </asp:GridView>
+        </div>
+        <div class="col-md-12">   
+            
+            <br />
+            <asp:Label ID="lblError" runat="server" Text="" CssClass="error"></asp:Label>
+            <asp:Label ID="lblExito" runat="server" Text="" CssClass="exito"></asp:Label>
+            <br />
             <asp:CustomValidator ID="CustomValidator1" runat="server" ClientValidationFunction="validarVacio" ControlToValidate="fechaI" CssClass="etiqueta" ErrorMessage="-La fecha inicio no puede ser vacía " ValidateEmptyText="True" ForeColor="Red" Width="283px"></asp:CustomValidator>
             <asp:CustomValidator ID="CustomValidator2" runat="server" ClientValidationFunction="validarVacio" ControlToValidate="fechaE" CssClass="etiqueta" ErrorMessage="-La fecha de entrega no puede ser vacía" ForeColor="Red" ValidateEmptyText="True" Width="323px"></asp:CustomValidator>
             <asp:CustomValidator ID="CustomValidator3" runat="server" ClientValidationFunction="validarVacio" ControlToValidate="txtHoraI" CssClass="etiqueta" ErrorMessage="-La hora de inicio no puede ser vacía" ForeColor="Red" ValidateEmptyText="True" Width="299px"></asp:CustomValidator>
             <asp:CustomValidator ID="CustomValidator4" runat="server" ClientValidationFunction="validarVacio" ControlToValidate="txtHoraE" CssClass="etiqueta" ErrorMessage="-La hora de entrega no puede ser vacía" ForeColor="Red" ValidateEmptyText="True" Width="314px"></asp:CustomValidator>
         </div>
-        <div class="col-md-12">   
-            <asp:Button ID="btnAceptar" runat="server" Text="Enviar" CssClass="btn btn-success" OnClick="btnAlta_Click"/>
-            <br />
-            <asp:Label ID="lblError" runat="server" Text="" CssClass="error"></asp:Label>
-            <asp:Label ID="lblExito" runat="server" Text="" CssClass="exito"></asp:Label>
-            <br />
-        </div> 
+        <div class="col-md-12">
+            <asp:GridView ID="GvDisponibles" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GvDisponibles_SelectedIndexChanged">
+                <Columns>
+                    <asp:BoundField DataField="Matricula" HeaderText="Matricula" />
+                    <asp:ImageField DataImageUrlField="FotoPrincipal" DataImageUrlFormatString="~/Imagenes/{0}" HeaderText="Foto">
+                        <ControlStyle Width="30px" />
+                        <HeaderStyle Width="30px" />
+                        <ItemStyle Width="30px" />
+                    </asp:ImageField>
+                    <asp:CommandField SelectText="Alquilar Vehículo" ShowCancelButton="False" ShowSelectButton="True" />
+                </Columns>
+            </asp:GridView>
+        </div>
     </div>
 </asp:Content>
