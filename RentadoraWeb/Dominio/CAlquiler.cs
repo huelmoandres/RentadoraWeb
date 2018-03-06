@@ -42,9 +42,17 @@ namespace Dominio
             {
                 resultado = Alquiler.ErroresAlta.ErrorHora;
             }
+            else if(vehiculo == null)
+            {
+                resultado = Alquiler.ErroresAlta.ErrorVehiculo;
+            }
+            else if(cliente == null)
+            {
+                resultado = Alquiler.ErroresAlta.ErrorResponsable;
+            }
             else
             {
-                Alquiler a = new Alquiler(fechaInicio, fechaFinal, horaInicio, horaFinal, vehiculo, cliente);
+                Alquiler a = new Alquiler(fechaInicio, fechaFinal, horaInicio, horaFinal, vehiculo, cliente, false);
                 alquileres.Add(a);
             }
             return resultado;

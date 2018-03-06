@@ -14,8 +14,9 @@ namespace Dominio
         private int horaFinal;
         private TipoVehiculo vehiculo;
         private Cliente responsable;
+        private bool devuelto;
 
-        public Alquiler(DateTime fechaInicio, DateTime fechaFinal, int horaInicio, int horaFinal, TipoVehiculo vehiculo, Cliente cliente)
+        public Alquiler(DateTime fechaInicio, DateTime fechaFinal, int horaInicio, int horaFinal, TipoVehiculo vehiculo, Cliente cliente, bool devuelto)
         {
             this.FechaInicio = fechaInicio;
             this.FechaFinal = fechaFinal;
@@ -23,6 +24,7 @@ namespace Dominio
             this.HoraFinal = horaFinal;
             this.Vehiculo = vehiculo;
             this.Responsable = responsable;
+            this.Devuelto = devuelto;
         }
 
         public DateTime FechaInicio
@@ -103,6 +105,19 @@ namespace Dominio
             }
         }
 
+        public bool Devuelto
+        {
+            get
+            {
+                return devuelto;
+            }
+
+            set
+            {
+                devuelto = value;
+            }
+        }
+
         public static bool ValidoFecha(DateTime fecha)
         {
             bool resultado = false;
@@ -116,7 +131,7 @@ namespace Dominio
         public static bool ValidoHora(int hora)
         {
             bool resultado = false;
-            if (hora > 0 && hora <= 24)
+            if (hora >= 0 && hora <= 23)
             {
                 resultado = true;
             }
@@ -139,7 +154,7 @@ namespace Dominio
             ErrorFecha,
             ErrorHora,
             ErrorVehiculo,
-            ErrorResponsable
+            ErrorResponsable,
         }
     }
 }

@@ -34,7 +34,8 @@ namespace Dominio
             else if (!TipoVehiculo.ValidoPrecio(precioDiario))
             {
                 resultado = TipoVehiculo.ErroresAlta.ErrorPrecioDiario;
-            } else if (this.ExisteTipo(marca, modelo))
+            }
+            else if (this.ExisteTipo(marca, modelo) != null)
             {
                 resultado = TipoVehiculo.ErroresAlta.ErrorExiste;
             }
@@ -51,8 +52,9 @@ namespace Dominio
             return this.tipos;
         }
 
-        public bool ExisteTipo(string marca, string modelo)
+        public TipoVehiculo ExisteTipo(string marca, string modelo)
         {
+            TipoVehiculo tp = null;
             bool existe = false;
             int i = 0;
             while(i < this.tipos.Count && !existe)
@@ -60,10 +62,11 @@ namespace Dominio
                 if(tipos[i].Marca == marca && tipos[i].Modelo == modelo)
                 {
                     existe = true;
+                    tp = tipos[i];
                 }
                 i++;
             }
-            return existe;
+            return tp;
         }
 
         public List<TipoVehiculo> ObtenerModeloMismaMarca(string marca)
