@@ -97,5 +97,14 @@ namespace Dominio
             ErrorPrecioDiario,
             ErrorExiste
         }
+
+        public override string ToString()
+        {
+            string ret = "";
+            ret += "Marca: " + this.marca + "/n";
+            ret += "Modelo: " + this.Modelo + "/n";
+            ret += "Precio diario: $" + this.precioDiario + "/n";
+            return ret;
+        }
     }
 }

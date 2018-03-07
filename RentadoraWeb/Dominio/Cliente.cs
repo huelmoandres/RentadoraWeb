@@ -81,5 +81,13 @@ namespace Dominio
             ErrorNomContacto,
             ErrorExiste
         }
+
+        public override string ToString()
+        {
+            string ret = "";
+            ret += "Teléfono: " + this.telefono + "/n";
+            ret += "Año de inicio: " + this.anioInicio + "/n";
+            return ret;
+        }
     }
 }

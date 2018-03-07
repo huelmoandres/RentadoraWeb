@@ -17,6 +17,7 @@ namespace Aplicacion
         private CUsuario cusuario;
         private CVehiculo cvehiculo;
         private CCliente ccliente;
+        private CAlquiler ccalquiler;
 
         public Repositorio(string rutaArchivo)
         {
@@ -25,6 +26,7 @@ namespace Aplicacion
             this.cusuario = CUsuario.Instancia;
             this.cvehiculo = CVehiculo.Instancia;
             this.ccliente = CCliente.Instancia;
+            this.ccalquiler = CAlquiler.Instancia;
         }
 
         public void Serializable()

@@ -101,6 +101,23 @@ namespace Dominio
             }
             return alquileres;
         }
+
+        public Alquiler BuscarAlquiler(string mat)
+        {
+            Alquiler buscado = null;
+            bool esta = false;
+            int i = 0;
+            while(i < alquileres.Count && !esta)
+            {
+                if(alquileres[i].Matricula == mat)
+                {
+                    buscado = alquileres[i];
+                    esta = true;
+                }
+                i++;
+            }
+            return buscado;
+        }
         
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {

@@ -99,5 +99,14 @@ namespace Dominio
             }
             return descuento;
         }
+
+        public override string ToString()
+        {
+            string ret = base.ToString();
+            ret += "Rut: " + this.rut + "/n";
+            ret += "Razón social: " + this.razonSocial + "/n";
+            ret += "Nombre de contacto: " + this.nombreContacto + "/n";
+            return ret;
+        }
     }
 }

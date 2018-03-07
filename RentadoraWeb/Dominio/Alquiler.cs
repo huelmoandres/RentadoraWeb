@@ -29,6 +29,7 @@ namespace Dominio
             this.Devuelto = devuelto;
         }
 
+        #region Propiedades
         public DateTime FechaInicio
         {
             get
@@ -132,6 +133,7 @@ namespace Dominio
                 matricula = value;
             }
         }
+        #endregion
 
         public static bool ValidoFecha(DateTime fecha)
         {
@@ -156,7 +158,7 @@ namespace Dominio
         public double CalcularCosto()
         {
             double costoTotal = 0;
-            TimeSpan ts = fechaInicio - fechaFinal;
+            TimeSpan ts = fechaFinal - fechaInicio;
             int cantidadDias = ts.Days;
             double costoFijo = vehiculo.PrecioDiario * cantidadDias;
             costoTotal = costoFijo - ((costoFijo * responsable.CalcularDescuento()) / 100);
@@ -170,6 +172,19 @@ namespace Dominio
             ErrorHora,
             ErrorVehiculo,
             ErrorResponsable,
+        }
+
+        public override string ToString()
+        {
+            string ret = "";
+            ret += "Fecha de inicio: " + this.fechaInicio + "/n";
+            ret += "Fecha de entrega: " + this.fechaFinal + "/n";
+            ret += "Hora de inicio: " + this.horaInicio + "/n";
+            ret += "Hora de final: " + this.horaFinal + "/n";
+            ret += vehiculo.ToString();
+            ret += responsable.ToString();
+            ret += "Matricula: " + this.matricula + "/n";
+            return ret;
         }
     }
 }

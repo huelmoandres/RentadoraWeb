@@ -154,7 +154,7 @@ namespace Dominio
             {
                 resultado = Particular.descuento;
             }
-            return descuento;
+            return resultado;
         }
 
         public enum EnumTipoDocumento
@@ -163,6 +163,17 @@ namespace Dominio
             Pasaporte,
             DNI,
             RUT
+        }
+
+        public override string ToString()
+        {
+            string ret = base.ToString();
+            ret += "CI: " + this.ci + "/n";
+            ret += "País documento: " + this.paisDocumento + "/n";
+            ret += "Nombre: " + this.nombre + "/n";
+            ret += "Apellido: " + this.apellido + "/n";
+            ret += "Descuento: " + descuento + "/n";
+            return ret;
         }
     }
 }

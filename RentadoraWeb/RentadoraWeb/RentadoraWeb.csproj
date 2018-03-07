@@ -97,6 +97,20 @@
     <Content Include="CSS\estilos.css" />
     <Content Include="CSS\jquery-ui.css" />
     <Content Include="Global.asax" />
+    <Content Include="Imagenes\a51.jpg" />
+    <Content Include="Imagenes\a52.jpg" />
+    <Content Include="Imagenes\a53.jpg" />
+    <Content Include="Imagenes\clio.jpg" />
+    <Content Include="Imagenes\corsa.jpg" />
+    <Content Include="Imagenes\fiatUno.jpg" />
+    <Content Include="Imagenes\fiatUno1.jpg" />
+    <Content Include="Imagenes\fiesta.jpg" />
+    <Content Include="Imagenes\gol.jpg" />
+    <Content Include="Imagenes\m5.jpg" />
+    <Content Include="Imagenes\sentra.jpg" />
+    <Content Include="Imagenes\siena.jpg" />
+    <Content Include="Imagenes\siena1.jpg" />
+    <Content Include="Imagenes\siena3.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -118,6 +132,7 @@
     <Content Include="Paginas\CargaManual.aspx" />
     <Content Include="Paginas\CerrarSesion.aspx" />
     <Content Include="Paginas\Inicio.aspx" />
+    <Content Include="Paginas\ListadoDevolucion.aspx" />
     <Content Include="Paginas\ListadoVehiculos.aspx" />
     <Content Include="ScriptsRentadora\bootstrap.bundle.js" />
     <Content Include="ScriptsRentadora\bootstrap.css" />
@@ -126,6 +141,8 @@
     <Content Include="ScriptsRentadora\validaciones.js" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Vehiculos\tipos.txt" />
+    <Content Include="Vehiculos\vehiculos.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -194,6 +211,13 @@
     </Compile>
     <Compile Include="Paginas\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ListadoDevolucion.aspx.cs">
+      <DependentUpon>ListadoDevolucion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ListadoDevolucion.aspx.designer.cs">
+      <DependentUpon>ListadoDevolucion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\ListadoVehiculos.aspx.cs">
       <DependentUpon>ListadoVehiculos.aspx</DependentUpon>

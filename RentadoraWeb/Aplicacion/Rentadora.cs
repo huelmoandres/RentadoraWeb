@@ -31,6 +31,15 @@ namespace Aplicacion
             this.AltaUsuario("gerente1", "gerente1", 2);
             this.AltaUsuario("gerente2", "gerente2", 2);
             this.AltaParticular("091383578", 1996, "46801321", "Cedula", "Uruguay", "Andres", "Huelmo");
+            this.AltaParticular("098517013", 2018, "54004599", "Cedula", "Argentina", "Agustin", "Huelmo");
+            this.AltaParticular("091816497", 1999, "86224975", "Cedula", "Paraguay", "Juan", "Perez");
+            this.AltaParticular("091383578", 2007, "18006782", "Cedula", "Ecuador", "Gabriel", "Garcia");
+            this.AltaParticular("091383578", 2011, "23459631", "Cedula", "Uruguay", "Jose", "Fernandez");
+            this.AltaEmpresa("2408509", 2012, 591025479, "SomosLoQueSomos", "Juan");
+            this.AltaEmpresa("2809506", 2017, 184357824, "MotelWA", "William");
+            this.AltaEmpresa("2428716", 2016, 347821354, "Ferreteria", "Pedro");
+            this.AltaEmpresa("2843657", 1998, 952147856, "Panaderia", "Pocho");
+            this.AltaEmpresa("2762558", 2011, 842164865, "Supermercado", "Sonia");
         }
 
         #region Ingreso de usuarios
@@ -132,6 +141,11 @@ namespace Aplicacion
         public List<Alquiler> ListadoAlquileres()
         {
             return CAlquiler.Instancia.ListadoAlquileres();
+        }
+
+        public Alquiler BuscarAlquiler(string mat)
+        {
+            return CAlquiler.Instancia.BuscarAlquiler(mat);
         }
         #endregion
 
