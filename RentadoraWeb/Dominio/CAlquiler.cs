@@ -69,11 +69,14 @@ namespace Dominio
                     {
                         if (matriculas.Contains(alquileres[i].Matricula))
                         {
-                            if (!((alquileres[i].FechaInicio >= fechaI && alquileres[i].FechaInicio <= fechaF) ||
-                                (alquileres[i].FechaFinal >= fechaI && alquileres[i].FechaFinal <= fechaF)))
+                            if ((alquileres[i].FechaInicio >= fechaI && alquileres[i].FechaInicio <= fechaF) ||
+                                (alquileres[i].FechaFinal >= fechaI && alquileres[i].FechaFinal <= fechaF) && !alquileres[i].Devuelto)
+                            {
+                                
+                            } else
                             {
                                 matriculasDisp.Add(alquileres[i].Matricula);
-                            } 
+                            }
                         }
                         else
                         {
@@ -87,6 +90,16 @@ namespace Dominio
                 }
             }
             return matriculasDisp;
+        }
+
+        public List<Alquiler> ListadoAlquileres()
+        {
+            List<Alquiler> alquileres = new List<Alquiler>();
+            foreach(Alquiler a in this.alquileres)
+            {
+                alquileres.Add(a);
+            }
+            return alquileres;
         }
         
         public void GetObjectData(SerializationInfo info, StreamingContext context)

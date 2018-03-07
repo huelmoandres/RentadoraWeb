@@ -2,6 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
-    <asp:DropDownList ID="GvFotos" runat="server" CssClass="borde">
-    </asp:DropDownList>
+    <asp:GridView ID="GvDisponibles" runat="server" AutoGenerateColumns="False">
+        <Columns>
+            <asp:BoundField DataField="Matricula" HeaderText="Matricula" />
+        </Columns>
+    </asp:GridView>
 </asp:Content>

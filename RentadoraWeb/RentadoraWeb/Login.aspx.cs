@@ -32,7 +32,6 @@ namespace RentadoraWeb
                     Session["usuario"] = u;
                     Session["email"] = u.Mail;
                     Session["rol"] = u.Rol;
-                    if (u.Rol == 1)
                     Response.Redirect("Paginas/Inicio.aspx");
                 }
                 else

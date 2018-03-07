@@ -13,12 +13,12 @@ namespace RentadoraWeb.Paginas {
     public partial class ListadoVehiculos {
         
         /// <summary>
-        /// Control GvFotos.
+        /// Control GvDisponibles.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList GvFotos;
+        protected global::System.Web.UI.WebControls.GridView GvDisponibles;
     }
 }

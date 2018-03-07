@@ -52,6 +52,21 @@ namespace Dominio
             return this.tipos;
         }
 
+        public List<string> MarcasSinRepetir()
+        {
+            List<string> s = new List<string>();
+            if (tipos.Count > 0)
+            {
+                foreach (TipoVehiculo t in tipos)
+                {
+                    if (!(s.Contains(t.Marca)))
+                    {
+                        s.Add(t.Marca);
+                    }
+                }
+            }
+            return s;
+        }
         public TipoVehiculo ExisteTipo(string marca, string modelo)
         {
             TipoVehiculo tp = null;

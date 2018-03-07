@@ -18,6 +18,16 @@ namespace RentadoraWeb
             string rutaArchivo = HttpRuntime.AppDomainAppPath + @"Binario\serial.bin";
             string rutaArchivoTipos = HttpRuntime.AppDomainAppPath + @"Vehiculos\tipos.txt";
             string rutaArchivoVehiculos = HttpRuntime.AppDomainAppPath + @"Vehiculos\vehiculos.txt";
+            if (File.Exists(rutaArchivoTipos))
+            {
+                Rentadora.Instancia.LeerDatosTipoVehiculos(rutaArchivoTipos);
+            }
+            if (File.Exists(rutaArchivoVehiculos))
+            {
+                Rentadora.Instancia.LeerDatosVehiculos(rutaArchivoVehiculos);
+            }
+
+
             if (File.Exists(rutaArchivo))
             {
                 Repositorio rep = new Repositorio(rutaArchivo);
@@ -26,15 +36,6 @@ namespace RentadoraWeb
             else
             {
                 Rentadora.Instancia.CargarDatosPrueba();
-            }
-
-            if (File.Exists(rutaArchivoTipos))
-            {
-                Rentadora.Instancia.LeerDatosTipoVehiculos(rutaArchivoTipos);
-            }
-            if (File.Exists(rutaArchivoVehiculos))
-            {
-                Rentadora.Instancia.LeerDatosVehiculos(rutaArchivoVehiculos);
             }
         }
 

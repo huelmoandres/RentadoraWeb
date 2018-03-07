@@ -38,9 +38,7 @@ namespace RentadoraWeb.Paginas
                         {
                             if (!IsPostBack)
                             {
-                                List<TipoVehiculo> marcas = Rentadora.Instancia.ListadoTipos();
-                                this.listMarca.DataTextField = "Marca";
-                                this.listMarca.DataValueField = "Marca";
+                                List<string> marcas = Rentadora.Instancia.MarcasSinRepetir();
                                 this.listMarca.DataSource = marcas;
                                 this.listMarca.DataBind();
                                 List<TipoVehiculo> modelos = Rentadora.Instancia.ObtenerModeloMismaMarca(this.listMarca.SelectedValue);
@@ -50,28 +48,9 @@ namespace RentadoraWeb.Paginas
                                 this.listModelo.DataBind();
                                 this.lblError.Text = "";
                                 this.lblExito.Text = "";
-                                string marca = this.listMarca.SelectedValue;
-                                string modelo = this.listModelo.SelectedValue;
-                                DateTime fechaI;
-                                DateTime fechaF;
-                                if (marca != "" && modelo != "")
-                                {
-                                    if (DateTime.TryParse(this.fechaI.Text, out fechaI))
-                                    {
-                                        if (DateTime.TryParse(this.fechaE.Text, out fechaF))
-                                        {
-                                            List<string> matriculas = Rentadora.Instancia.MatriculasPorMarcaModelo(marca, modelo);
-                                            List<string> disponibles = Rentadora.Instancia.MatriculasDisponibles(matriculas, fechaI, fechaF);
-                                            List<Vehiculo> vehiculos = Rentadora.Instancia.VehiculosDisponibles(disponibles);
-                                            if (vehiculos.Count > 0)
-                                            {
-                                                this.lblError.Text = "";
-                                                this.GvDisponibles.DataSource = vehiculos;
-                                                this.GvDisponibles.DataBind();
-                                            }
-                                        }
-                                    }
-                                }
+                                this.fechaI.Text = DateTime.Today.ToShortDateString();
+                                this.fechaE.Text = DateTime.Today.ToShortDateString();
+                                CargarGrilla();
                             }
                         }
                         else
@@ -97,6 +76,9 @@ namespace RentadoraWeb.Paginas
 
         protected void listMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.lblError.Text = "";
+            this.lblExito.Text = "";
+            this.GvDisponibles.Visible = false;
             string option = this.listMarca.SelectedValue;
             if (option != "")
             {
@@ -105,11 +87,15 @@ namespace RentadoraWeb.Paginas
                 this.listModelo.DataValueField = "Modelo";
                 this.listModelo.DataSource = modelos;
                 this.listModelo.DataBind();
+                CargarGrilla();
             }
         }
 
         protected void listModelo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.GvDisponibles.Visible = false;
+            this.lblError.Text = "";
+            this.lblExito.Text = "";
             string marca = this.listMarca.SelectedValue;
             string modelo = this.listModelo.SelectedValue;
             DateTime fechaI;
@@ -125,14 +111,22 @@ namespace RentadoraWeb.Paginas
                         List<Vehiculo> vehiculos = Rentadora.Instancia.VehiculosDisponibles(disponibles);
                         if (vehiculos.Count > 0) {
                             this.lblError.Text = "";
-                            this.GvDisponibles.Visible = true;
                             this.GvDisponibles.DataSource = vehiculos;
                             this.GvDisponibles.DataBind();
+                            this.GvDisponibles.Visible = true;
                         } else {
                             this.GvDisponibles.Visible = false;
                             this.lblError.Text = "No se encuentran vehículos disponibles para la marca: " + marca + ", modelo " + modelo;
                         }
                     }
+                    else
+                    {
+                        this.lblError.Text = "Ingrese fecha correcta";
+                    }
+                }
+                else
+                {
+                    this.lblError.Text = "Ingrese fecha correcta";
                 }
             }
         }
@@ -212,8 +206,51 @@ namespace RentadoraWeb.Paginas
                         this.txtHoraI.Text = "";
                         this.txtHoraE.Text = "";
                         this.lblError.Text = "";
+                        this.GvDisponibles.Visible = false;
                         lblExito.Text = "Se ingresó alquiler correctamente.";
                     }
+                }
+            }
+        }
+
+        protected void CargarGrilla()
+        {
+            this.lblError.Text = "";
+            this.GvDisponibles.Visible = false;
+            lblExito.Text = "";
+            string marca = this.listMarca.SelectedValue;
+            string modelo = this.listModelo.SelectedValue;
+            DateTime fechaI;
+            DateTime fechaF;
+            if (marca != "" && modelo != "")
+            {
+                if (DateTime.TryParse(this.fechaI.Text, out fechaI))
+                {
+                    if (DateTime.TryParse(this.fechaE.Text, out fechaF))
+                    {
+                        List<string> matriculas = Rentadora.Instancia.MatriculasPorMarcaModelo(marca, modelo);
+                        List<string> disponibles = Rentadora.Instancia.MatriculasDisponibles(matriculas, fechaI, fechaF);
+                        List<Vehiculo> vehiculos = Rentadora.Instancia.VehiculosDisponibles(disponibles);
+                        if (vehiculos.Count > 0)
+                        {
+                            this.lblError.Text = "";
+                            this.GvDisponibles.DataSource = vehiculos;
+                            this.GvDisponibles.DataBind();
+                            this.GvDisponibles.Visible = true;
+                        }
+                        else
+                        {
+                            this.lblError.Text = "No hay vehículos disponibles para esas fechas";
+                        }
+                    }
+                    else
+                    {
+                        this.lblError.Text = "Ingrese fecha correcta";
+                    }
+                }
+                else
+                {
+                    this.lblError.Text = "Ingrese fecha correcta";
                 }
             }
         }

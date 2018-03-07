@@ -12,9 +12,9 @@ namespace RentadoraWeb.Paginas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<string> fotos = CVehiculo.Instancia.ListarFotos("123456");
-            GvFotos.DataSource = fotos;
-            GvFotos.DataBind();
+            List<Alquiler> alquileres = CAlquiler.Instancia.ListadoAlquileres();
+            GvDisponibles.DataSource = alquileres;
+            GvDisponibles.DataBind();
         }
     }
 }

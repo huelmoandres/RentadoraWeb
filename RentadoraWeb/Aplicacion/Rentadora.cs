@@ -31,7 +31,6 @@ namespace Aplicacion
             this.AltaUsuario("gerente1", "gerente1", 2);
             this.AltaUsuario("gerente2", "gerente2", 2);
             this.AltaParticular("091383578", 1996, "46801321", "Cedula", "Uruguay", "Andres", "Huelmo");
-            this.AltaAlquiler(Convert.ToDateTime("06/03/2018"), Convert.ToDateTime("16/03/2018"), 0, 20, ExisteTipo("Fiat", "Uno"), ExisteParticular("46801321"), "123456");
         }
 
         #region Ingreso de usuarios
@@ -95,6 +94,11 @@ namespace Aplicacion
         {
             return CTipoVehiculo.Instancia.ExisteTipo(marca, modelo);
         }
+
+        public List<string> MarcasSinRepetir()
+        {
+            return CTipoVehiculo.Instancia.MarcasSinRepetir();
+        }
         #endregion
 
         #region Controlador CVehiculo
@@ -123,6 +127,11 @@ namespace Aplicacion
         public List<string> MatriculasDisponibles(List<string> matriculas, DateTime fechaI, DateTime fechaF)
         {
             return CAlquiler.Instancia.MatriculasDisponibles(matriculas, fechaI, fechaF);
+        }
+
+        public List<Alquiler> ListadoAlquileres()
+        {
+            return CAlquiler.Instancia.ListadoAlquileres();
         }
         #endregion
 
