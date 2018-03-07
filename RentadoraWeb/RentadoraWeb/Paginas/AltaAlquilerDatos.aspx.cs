@@ -106,12 +106,10 @@ namespace RentadoraWeb.Paginas
                 {
                     if (DateTime.TryParse(this.fechaE.Text, out fechaF))
                     {
-                        List<string> matriculas = Rentadora.Instancia.MatriculasPorMarcaModelo(marca, modelo);
-                        List<string> disponibles = Rentadora.Instancia.MatriculasDisponibles(matriculas, fechaI, fechaF);
-                        List<Vehiculo> vehiculos = Rentadora.Instancia.VehiculosDisponibles(disponibles);
-                        if (vehiculos.Count > 0) {
+                        List<Vehiculo> vehiculosDisp = Rentadora.Instancia.VehiculosDisponibles(marca, modelo, fechaI, fechaF);
+                        if (vehiculosDisp.Count > 0) {
                             this.lblError.Text = "";
-                            this.GvDisponibles.DataSource = vehiculos;
+                            this.GvDisponibles.DataSource = vehiculosDisp;
                             this.GvDisponibles.DataBind();
                             this.GvDisponibles.Visible = true;
                         } else {
@@ -161,8 +159,7 @@ namespace RentadoraWeb.Paginas
                 int horaEntrega;
                 string marca = this.listMarca.SelectedValue;
                 string modelo = this.listModelo.SelectedValue;
-                string matricula = this.GvDisponibles.SelectedRow.Cells[0].Text;
-                TipoVehiculo tv = Rentadora.Instancia.ExisteTipo(marca, modelo);
+                Vehiculo v = Rentadora.Instancia.ExisteVehiculo(this.GvDisponibles.SelectedRow.Cells[0].Text);
 
                 if (!DateTime.TryParse(this.fechaI.Text, out fechaInicio))
                 {
@@ -182,7 +179,7 @@ namespace RentadoraWeb.Paginas
                 }
                 else
                 {
-                    Alquiler.ErroresAlta alta = Rentadora.Instancia.AltaAlquiler(fechaInicio, fechaFin, horaInicio, horaEntrega, tv, c, matricula);
+                    Alquiler.ErroresAlta alta = Rentadora.Instancia.AltaAlquiler(fechaInicio, fechaFin, horaInicio, horaEntrega, v, c);
                     if (alta == Alquiler.ErroresAlta.ErrorFecha)
                     {
                         this.lblError.Text = "Debe ingresar una fecha correcta.";
@@ -193,7 +190,7 @@ namespace RentadoraWeb.Paginas
                     }
                     else if (alta == Alquiler.ErroresAlta.ErrorVehiculo)
                     {
-                        this.lblError.Text = "El tipo de vehículo no existe.";
+                        this.lblError.Text = "El vehículo no existe en nuestro sistema.";
                     }
                     else if (alta == Alquiler.ErroresAlta.ErrorResponsable)
                     {
@@ -228,13 +225,11 @@ namespace RentadoraWeb.Paginas
                 {
                     if (DateTime.TryParse(this.fechaE.Text, out fechaF))
                     {
-                        List<string> matriculas = Rentadora.Instancia.MatriculasPorMarcaModelo(marca, modelo);
-                        List<string> disponibles = Rentadora.Instancia.MatriculasDisponibles(matriculas, fechaI, fechaF);
-                        List<Vehiculo> vehiculos = Rentadora.Instancia.VehiculosDisponibles(disponibles);
-                        if (vehiculos.Count > 0)
+                        List<Vehiculo> vehiculosDisp = Rentadora.Instancia.VehiculosDisponibles(marca, modelo, fechaI, fechaF);
+                        if (vehiculosDisp.Count > 0)
                         {
                             this.lblError.Text = "";
-                            this.GvDisponibles.DataSource = vehiculos;
+                            this.GvDisponibles.DataSource = vehiculosDisp;
                             this.GvDisponibles.DataBind();
                             this.GvDisponibles.Visible = true;
                         }

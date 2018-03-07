@@ -7,26 +7,24 @@ using System.Threading.Tasks;
 namespace Dominio
 {
     [Serializable]
-    public class Alquiler
+    public class Alquiler : IComparable<Alquiler>
     {
         private DateTime fechaInicio;
         private DateTime fechaFinal;
         private int horaInicio;
         private int horaFinal;
-        private TipoVehiculo vehiculo;
+        private Vehiculo vehiculo;
         private Cliente responsable;
         private bool devuelto;
-        private string matricula;
 
-        public Alquiler(DateTime fechaInicio, DateTime fechaFinal, int horaInicio, int horaFinal, TipoVehiculo vehiculo, Cliente cliente, string matricula, bool devuelto)
+        public Alquiler(DateTime fechaInicio, DateTime fechaFinal, int horaInicio, int horaFinal, Vehiculo vehiculo, Cliente cliente, bool devuelto)
         {
             this.FechaInicio = fechaInicio;
             this.FechaFinal = fechaFinal;
             this.HoraInicio = horaInicio;
             this.HoraFinal = horaFinal;
             this.Vehiculo = vehiculo;
-            this.Responsable = responsable;
-            this.Matricula = matricula;
+            this.Responsable = cliente;
             this.Devuelto = devuelto;
         }
 
@@ -83,7 +81,7 @@ namespace Dominio
             }
         }
 
-        public TipoVehiculo Vehiculo
+        public Vehiculo Vehiculo
         {
             get
             {
@@ -109,6 +107,14 @@ namespace Dominio
             }
         }
 
+        public string AlquilerMatricula
+        {
+            get
+            {
+                return Vehiculo.Matricula;
+            }
+        }
+
         public bool Devuelto
         {
             get
@@ -119,19 +125,6 @@ namespace Dominio
             set
             {
                 devuelto = value;
-            }
-        }
-
-        public string Matricula
-        {
-            get
-            {
-                return matricula;
-            }
-
-            set
-            {
-                matricula = value;
             }
         }
         #endregion
@@ -161,9 +154,23 @@ namespace Dominio
             double costoTotal = 0;
             TimeSpan ts = fechaFinal - fechaInicio;
             int cantidadDias = ts.Days;
-            double costoFijo = vehiculo.PrecioDiario * cantidadDias;
+            double costoFijo = vehiculo.Tipo.PrecioDiario * cantidadDias;
             costoTotal = costoFijo - ((costoFijo * responsable.CalcularDescuento()) / 100);
             return costoTotal;
+        }
+
+        public int CompareTo(Alquiler otro)
+        {
+            int resultado = 0;
+            if (otro != null)
+            {
+                resultado = otro.FechaFinal.CompareTo(this.FechaFinal);
+                if (resultado == 0)
+                {
+                    resultado = this.Vehiculo.Matricula.CompareTo(otro.Vehiculo.Matricula);
+                }
+            }
+            return resultado;
         }
 
         public enum ErroresAlta
@@ -178,13 +185,15 @@ namespace Dominio
         public override string ToString()
         {
             string ret = "";
-            ret += "Fecha de inicio: " + this.fechaInicio + "/n";
-            ret += "Fecha de entrega: " + this.fechaFinal + "/n";
-            ret += "Hora de inicio: " + this.horaInicio + "/n";
-            ret += "Hora de final: " + this.horaFinal + "/n";
+            ret += "<Br /><b>Datos del Alquiler: </b></br>";
+            ret += "Fecha de inicio: " + this.fechaInicio.ToShortDateString() + "<Br />";
+            ret += "Fecha de entrega: " + this.fechaFinal.ToShortDateString()  + "<Br />";
+            ret += "Hora de inicio: " + this.horaInicio + "<Br />";
+            ret += "Hora de final: " + this.horaFinal + "<Br />";
+            ret += "<Br /><b>Datos del Vehículo: </b></br>";
             ret += vehiculo.ToString();
+            ret += "<Br /><b>Datos del Cliente: </b></br>";
             ret += responsable.ToString();
-            ret += "Matricula: " + this.matricula + "/n";
             return ret;
         }
     }

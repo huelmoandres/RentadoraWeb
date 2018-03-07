@@ -40,10 +40,14 @@ namespace RentadoraWeb.Paginas
                     double costoFaltante = 0;
                     TimeSpan ts = DateTime.Today - al.FechaFinal;
                     int cantidadDias = ts.Days;
-                    costoFaltante = al.Vehiculo.PrecioDiario * cantidadDias;
-                    faltante = "Costo faltante: " + costoFaltante + "/n";
+                    costoFaltante = al.Vehiculo.Tipo.PrecioDiario * cantidadDias;
+                    faltante = "<br />Costo faltante: " + costoFaltante + "<Br />";
                 }
                 this.txtMsg.Text = al.ToString() + faltante;
+                this.txtButton.Visible = false;
+                this.txtMatricula.Visible = false;
+                this.lblMatricula.Visible = false;
+                this.lblSubTitulo.Text = "Detalles de factura"; 
             }
             else
             {

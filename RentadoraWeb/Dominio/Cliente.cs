@@ -57,7 +57,7 @@ namespace Dominio
         public static bool ValidoAnio(int anio)
         {
             bool resultado = false;
-            if (anio > 0)
+            if (anio > 1930)
             {
                 resultado = true;
             }
@@ -85,8 +85,8 @@ namespace Dominio
         public override string ToString()
         {
             string ret = "";
-            ret += "Teléfono: " + this.telefono + "/n";
-            ret += "Año de inicio: " + this.anioInicio + "/n";
+            ret += "Teléfono: " + this.telefono + "<br />";
+            ret += "Año de inicio: " + this.anioInicio + "<br />";
             return ret;
         }
     }

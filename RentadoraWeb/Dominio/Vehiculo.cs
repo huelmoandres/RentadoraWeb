@@ -13,7 +13,7 @@ namespace Dominio
         private TipoVehiculo tipo;
         private int anio;
         private int kilometraje;
-        List<string> fotos;
+        private List<string> fotos;
 
         public Vehiculo(string matricula, TipoVehiculo tipo, int anio, int kilometraje, List<string> fotos)
         {
@@ -37,7 +37,7 @@ namespace Dominio
             }
         }
 
-        internal TipoVehiculo Tipo
+        public TipoVehiculo Tipo
         {
             get
             {
@@ -145,6 +145,17 @@ namespace Dominio
                 resultado = true;
             }
             return resultado;
+        }
+
+        public override string ToString()
+        {
+            string ret = "";
+            ret += "Matricula: " + this.matricula + "<Br />";
+            ret += "Marca: " + this.Tipo.Marca + "<Br />";
+            ret += "Modelo: " + this.Tipo.Modelo + "<Br />";
+            ret += "Año: " + this.anio + "<Br />";
+            ret += "Kilometraje: " + this.kilometraje + "<Br />";
+            return ret;
         }
 
         public enum ErroresAlta

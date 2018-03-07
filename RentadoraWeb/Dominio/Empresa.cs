@@ -103,9 +103,9 @@ namespace Dominio
         public override string ToString()
         {
             string ret = base.ToString();
-            ret += "Rut: " + this.rut + "/n";
-            ret += "Razón social: " + this.razonSocial + "/n";
-            ret += "Nombre de contacto: " + this.nombreContacto + "/n";
+            ret += "Rut: " + this.rut + "<br />";
+            ret += "Razón social: " + this.razonSocial + "<br />";
+            ret += "Nombre de contacto: " + this.nombreContacto + "<br />";
             return ret;
         }
     }

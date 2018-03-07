@@ -168,11 +168,11 @@ namespace Dominio
         public override string ToString()
         {
             string ret = base.ToString();
-            ret += "CI: " + this.ci + "/n";
-            ret += "País documento: " + this.paisDocumento + "/n";
-            ret += "Nombre: " + this.nombre + "/n";
-            ret += "Apellido: " + this.apellido + "/n";
-            ret += "Descuento: " + descuento + "/n";
+            ret += "CI: " + this.ci + "<br />";
+            ret += "País documento: " + this.paisDocumento + "<br />";
+            ret += "Nombre: " + this.nombre + "<br />";
+            ret += "Apellido: " + this.apellido + "<br />";
+            ret += "Descuento: %" + descuento + "<br />";
             return ret;
         }
     }

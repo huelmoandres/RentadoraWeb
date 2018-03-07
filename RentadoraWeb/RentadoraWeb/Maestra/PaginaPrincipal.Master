@@ -38,6 +38,7 @@
                 <asp:Panel ID="menuGerente" runat="server">
                     <ul class="nav nav-tabs navbar">
                         <li><a href="/Paginas/Inicio.aspx">Inicio</a></li>
+                        <li><a href="/Paginas/ListadoVehiculos.aspx">Vehículos Retrasados</a></li>
                         <li><a href="/Paginas/CerrarSesion.aspx">Cerrar Sesión</a></li>
                     </ul>
                 </asp:Panel>

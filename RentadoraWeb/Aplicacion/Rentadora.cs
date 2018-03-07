@@ -116,31 +116,16 @@ namespace Aplicacion
             return CVehiculo.Instancia.AltaVehiculo(matricula, tipo, anio, kilometraje, fotos);
         }
 
-        public List<string> MatriculasPorMarcaModelo(string marca, string modelo)
+        public Vehiculo ExisteVehiculo(string matricula)
         {
-            return CVehiculo.Instancia.MatriculasPorMarcaModelo(marca, modelo);
-        }
-
-        public List<Vehiculo> VehiculosDisponibles(List<string> matriculas)
-        {
-            return CVehiculo.Instancia.VehiculosDisponibles(matriculas);
+            return CVehiculo.Instancia.ExisteVehiculo(matricula);
         }
         #endregion
 
         #region Controlador CAlquiler
-        public Alquiler.ErroresAlta AltaAlquiler(DateTime fechaInicio, DateTime fechaFinal, int horaInicio, int horaFinal, TipoVehiculo vehiculo, Cliente cliente, string matricula)
+        public Alquiler.ErroresAlta AltaAlquiler(DateTime fechaInicio, DateTime fechaFinal, int horaInicio, int horaFinal, Vehiculo vehiculo, Cliente cliente)
         {
-            return CAlquiler.Instancia.AltaAlquiler(fechaInicio, fechaFinal, horaInicio, horaFinal, vehiculo, cliente, matricula);
-        }
-
-        public List<string> MatriculasDisponibles(List<string> matriculas, DateTime fechaI, DateTime fechaF)
-        {
-            return CAlquiler.Instancia.MatriculasDisponibles(matriculas, fechaI, fechaF);
-        }
-
-        public List<Alquiler> ListadoAlquileres()
-        {
-            return CAlquiler.Instancia.ListadoAlquileres();
+            return CAlquiler.Instancia.AltaAlquiler(fechaInicio, fechaFinal, horaInicio, horaFinal, vehiculo, cliente);
         }
 
         public Alquiler BuscarAlquiler(string mat)
@@ -148,13 +133,18 @@ namespace Aplicacion
             return CAlquiler.Instancia.BuscarAlquiler(mat);
         }
 
-        public List<TipoVehiculo> Prueba(string marca, string modelo, DateTime fechaI, DateTime fechaE)
+        public List<Alquiler> VehiculosRetrasados()
         {
-            return CAlquiler.Instancia.Prueba(marca, modelo, fechaI, fechaE);
+            return CAlquiler.Instancia.VehiculosRetrasados();
+        }
+
+        public List<Vehiculo> VehiculosDisponibles(string marca, string modelo, DateTime fechaI, DateTime fechaE)
+        {
+            return CAlquiler.Instancia.VehiculosDisponibles(marca, modelo, fechaI, fechaE);
         }
         #endregion
 
-        #region Metodos de lectura de archivos .txt
+        #region Metodos de lectura y grabado de archivos .txt
         public void LeerDatosTipoVehiculos(string rutaArchivo)
         {
             StreamReader str = null;
@@ -225,6 +215,23 @@ namespace Aplicacion
             {
                 if (str != null)
                     str.Close();
+            }
+        }
+
+        public void GrabarLog(string rutaArchivo, string fechaEmision, string nombre)
+        {
+            if (File.Exists(rutaArchivo))
+            {
+                StreamWriter sw = File.AppendText(rutaArchivo);
+                sw.WriteLine(fechaEmision + "-" + nombre);
+                sw.Close();
+            }
+            else
+            {
+                FileStream fs = File.Create(rutaArchivo);
+                StreamWriter sw = new StreamWriter(fs);
+                sw.WriteLine(fechaEmision + "-" + nombre);
+                sw.Close();
             }
         }
         #endregion

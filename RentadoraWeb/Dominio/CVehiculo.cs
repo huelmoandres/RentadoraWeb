@@ -43,7 +43,7 @@ namespace Dominio
             {
                 resultado = Vehiculo.ErroresAlta.ErrorFoto;
             }
-            else if (this.ExisteVehiculo(matricula))
+            else if (this.ExisteVehiculo(matricula) != null)
             {
                 resultado = Vehiculo.ErroresAlta.ErrorExiste;
             }
@@ -55,8 +55,9 @@ namespace Dominio
             return resultado;
         }
 
-        public bool ExisteVehiculo(string matricula)
+        public Vehiculo ExisteVehiculo(string matricula)
         {
+            Vehiculo veh = null;
             bool existe = false;
             int i = 0;
             while (i < this.vehiculos.Count && !existe)
@@ -64,10 +65,11 @@ namespace Dominio
                 if (vehiculos[i].Matricula == matricula)
                 {
                     existe = true;
+                    veh = vehiculos[i];
                 }
                 i++;
             }
-            return existe;
+            return veh;
         }
 
         public List<string> ListarFotos(string matricula)
@@ -87,36 +89,17 @@ namespace Dominio
             return fotos;
         }
 
-        public List<string> MatriculasPorMarcaModelo(string marca, string modelo)
+        public List<Vehiculo> ListadoVehiculoMarcaModelo(string marca, string modelo)
         {
-            List<string> matriculas = new List<string>();
-            if(this.vehiculos.Count > 0)
+            List<Vehiculo> veh = new List<Vehiculo>();
+            foreach(Vehiculo v in vehiculos)
             {
-                for (int i = 0; i < vehiculos.Count; i++)
+                if(v.Tipo.Marca == marca && v.Tipo.Modelo == modelo)
                 {
-                    if (vehiculos[i].Tipo.Marca == marca && vehiculos[i].Tipo.Modelo == modelo)
-                    {
-                        matriculas.Add(vehiculos[i].Matricula);
-                    }
+                    veh.Add(v);
                 }
             }
-            return matriculas;
-        }
-
-        public List<Vehiculo> VehiculosDisponibles(List<string> matriculas)
-        {
-            List<Vehiculo> vehiculosDisp = new List<Vehiculo>();
-            if(matriculas.Count > 0)
-            {
-                for (int i = 0; i < this.vehiculos.Count; i++)
-                {
-                    if (matriculas.Contains(vehiculos[i].Matricula))
-                    {
-                        vehiculosDisp.Add(vehiculos[i]);
-                    }
-                }
-            }
-            return vehiculosDisp;
+            return veh;
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

@@ -5,9 +5,9 @@
     <br />
     <h1>Devolución vehículo</h1>
     <br />
-    <p>Ingrese matrícula del vehículo devuelto: </p>
+    <asp:Label ID="lblSubTitulo" runat="server" Text="Ingrese matrícula del vehículo devuelto::"></asp:Label>
     <div style="height: 135px">
-        <asp:Label ID="Label1" runat="server" Text="Matrícula:"></asp:Label>
+        <asp:Label ID="lblMatricula" runat="server" Text="Matrícula:"></asp:Label>
         <asp:TextBox ID="txtMatricula" runat="server"></asp:TextBox>
         <asp:CustomValidator ID="CustomValidator1" runat="server" ClientValidationFunction="validarVacio" ControlToValidate="txtMatricula" ErrorMessage="Debe ingresar matrícula" ValidateEmptyText="True">*</asp:CustomValidator>
         <br />
