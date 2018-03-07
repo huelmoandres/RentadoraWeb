@@ -147,6 +147,11 @@ namespace Aplicacion
         {
             return CAlquiler.Instancia.BuscarAlquiler(mat);
         }
+
+        public List<TipoVehiculo> Prueba(string marca, string modelo, DateTime fechaI, DateTime fechaE)
+        {
+            return CAlquiler.Instancia.Prueba(marca, modelo, fechaI, fechaE);
+        }
         #endregion
 
         #region Metodos de lectura de archivos .txt
@@ -198,7 +203,7 @@ namespace Aplicacion
                     int anio;
                     int kilometraje;
                     TipoVehiculo tipo = this.ExisteTipo(marca, modelo);
-                    if(int.TryParse(datos[3], out anio))
+                    if (int.TryParse(datos[3], out anio))
                     {
                         if (int.TryParse(datos[4], out kilometraje))
                         {
@@ -221,7 +226,6 @@ namespace Aplicacion
                 if (str != null)
                     str.Close();
             }
-
         }
         #endregion
     }

@@ -118,7 +118,21 @@ namespace Dominio
             }
             return buscado;
         }
-        
+
+        public List<TipoVehiculo> Prueba(string marca, string modelo, DateTime fechaI, DateTime fechaE)
+        {
+            List<TipoVehiculo> lv = new List<TipoVehiculo>();
+                for (int i = 0; i < alquileres.Count; i++)
+                {
+                    if (!((alquileres[i].FechaInicio >= fechaI && alquileres[i].FechaInicio <= fechaE) ||
+                            (alquileres[i].FechaFinal >= fechaI && alquileres[i].FechaFinal <= fechaE)) && (!alquileres[i].Devuelto))
+                    {
+                    lv.Add(alquileres[i].Vehiculo);
+                    }
+                }
+                
+            return lv;
+        }
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("listaAlquileres", this.alquileres, typeof(List<Alquiler>));
